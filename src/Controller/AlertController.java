@@ -1,5 +1,30 @@
 package Controller;
 
-public class AlertController {
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
+import Modules.Pair;
+import database_related.Crud;
+
+public class AlertController {
+	
+	public void addAlert(String status,String type,String size,HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		Cookie[] cookies = request.getCookies();
+		String userID="-1";
+		for( Cookie c : cookies) {
+			if(c.getName()=="userID") {
+				userID=c.getValue();
+			}
+		}
+		ArrayList<Pair>values=new ArrayList<Pair>();
+		values.add(new Pair("userID",userID));
+		values.add(new Pair("status",status));
+		values.add(new Pair("type",type));
+		values.add(new Pair("size",size));
+		Crud.insertRecord("AlertTable", values);
+	}
+	
 }
