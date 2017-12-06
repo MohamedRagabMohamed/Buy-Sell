@@ -85,7 +85,7 @@ public class Crud {
 		 ArrayList<Pair>values=new ArrayList<Pair>();
 		 values.add(new Pair("userID","1"));
 		 values.add(new Pair("advertisementID","1"));
-		 values.add(new Pair("comment","hello"));
+		 values.add(new Pair("comment","hello from michael"));
 		 insertRecord("CommentTable", values);
 	 }
 }

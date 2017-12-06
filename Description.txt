@@ -1,0 +1,130 @@
+Classes :
+	1) User (user or admin)
+	2) House
+	3) advertisement
+	4) alert
+	5) comment
+	6) Notification
+
+Pages :
+	1) SignIn
+	2) SignUp
+	3) user .. view profile ( include his Advertise )
+	4) user .. update profile ( update info only )
+	5) Create an Advertise 
+	6) Update an Advertise
+7) Search ( Search Textbox + dropbox (select tag) to choose category ) +  Result of the search 
+	8) Create alert 
+	9) Notifications
+	10) house details ( include comments AND/OR rate )
+	11) admin .. view all users (include reset password for each)
+	
+
+Data Base : 
+	
+User{
+	id,
+	userName,
+	email ,
+	password,
+	role,
+	firstName ,
+	lastName ,
+	profilePicture,
+	address ,
+	phoneNumber
+}
+House{
+	id,
+	size ,
+	description,
+	floor,
+	status,
+	type ,
+	images , 	//delemiter = '##'
+	longitude ,
+	latitude
+}
+Comment{
+	userID,
+	advertisementID,
+	comment
+}
+Advertisement{
+	id,
+	userID,
+	houseID ,
+	rate ,
+	type 	// sell or rent
+}
+Alert{
+	userID,
+	size,
+	type,
+	status
+}
+Notification{
+	id,
+	notification,
+	userID , 
+	houseID
+}
+CREATE TABLE UserTable(
+    id int AUTO_INCREMENT PRIMARY KEY ,
+	userName VARCHAR(255) NOT NULL UNIQUE,
+	password VARCHAR(255) NOT NULL ,
+    firstName VARCHAR(255) ,
+    lastName VARCHAR(255),
+    email VARCHAR(255),
+	role VARCHAR(255),
+	address VARCHAR(255),
+	profilePicture VARCHAR(255),
+	phoneNumber VARCHAR(255)
+);
+CREATE TABLE HouseTable(
+    id int AUTO_INCREMENT PRIMARY KEY ,
+	size float,
+	description varchar(255),
+	floor int,
+	status varchar(255),
+	type varchar(255), 
+	images varchar(255), 
+	longitude float,
+	latitude float
+);
+CREATE TABLE CommentTable(
+    id int AUTO_INCREMENT PRIMARY KEY ,
+	userID int,
+	advertisementID int,
+	comment varchar(255)
+);
+CREATE TABLE AdvertisementTable(
+    id int AUTO_INCREMENT PRIMARY KEY ,
+	userID int,
+	houseID int,
+	rate float,
+	type varchar(255)
+);
+CREATE TABLE AlertTable(
+    id int AUTO_INCREMENT PRIMARY KEY ,
+	userID int,
+	size float,
+	type varchar(255), 
+	status varchar(255)
+);
+CREATE TABLE NotificationTable(
+    id int AUTO_INCREMENT PRIMARY KEY ,
+	userID int,
+	houseID int,
+	notification varchar(255)
+);
+
+
+
+Host: sql11.freesqldatabase.com
+Database name: sql11209300
+Database user: sql11209300
+Database password: YiEnlbC7FG
+Port number: 3306
+
+http://www.phpmyadmin.co/
