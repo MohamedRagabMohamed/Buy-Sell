@@ -81,4 +81,11 @@ public class Crud {
 		//DBConnection.closeConnection();
 		return status;
 	}
+	 public static void main(String args[]) throws ClassNotFoundException, SQLException {
+		 ArrayList<Pair>values=new ArrayList<Pair>();
+		 values.add(new Pair("userID","1"));
+		 values.add(new Pair("advertisementID","1"));
+		 values.add(new Pair("comment","hello"));
+		 insertRecord("CommentTable", values);
+	 }
 }

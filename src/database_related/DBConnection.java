@@ -14,18 +14,17 @@ import Modules.Pair;
 
 public class DBConnection {
 	 
-	 private static String user = "";
-	 private static String pass = "";
-	 private static String database = "";
+	 private static String user = "sql11209300";
+	 private static String pass = "YiEnlbC7FG";
+	 private static String database = "sql11209300";
 	 public static Connection getConnetion() throws SQLException, ClassNotFoundException {
-		 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		 Class.forName("com.mysql.jdbc.Driver");
 		 Connection conn = null;
-		 String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName="
-		 +database+";integratedSecurity=true;user="+user+";password="+pass; 
-		 conn = DriverManager.getConnection(connectionUrl);
+		 String connectionUrl = "jdbc:mysql://sql11.freesqldatabase.com:3306/"+database;
+		 conn = DriverManager.getConnection(connectionUrl,user,pass);
          return conn;
 	 }
-
+	 //Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname", “UserName",“Password");
 }
 
 
