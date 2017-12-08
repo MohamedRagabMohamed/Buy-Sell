@@ -39,17 +39,8 @@ public class signupServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		String uName = request.getParameter("username");
-		String fName = request.getParameter("firstname");
-		String lName = request.getParameter("lastname");
-		String userEmail = request.getParameter("email");
-		String userPassword = request.getParameter("password");
-		String phone = request.getParameter("phone");
-		String uAddress = request.getParameter("address");
-		
 		try {
-			UserController.insertUser(uName, fName, lName, userEmail, userPassword, phone, uAddress);
+			UserController.addUser(request);
 		} catch (ClassNotFoundException e) {
 			System.out.println("ERROR in SignupServlet-insertUser-ClassNotFoundException");
 			e.printStackTrace();

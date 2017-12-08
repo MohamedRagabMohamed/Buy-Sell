@@ -4,32 +4,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import Modules.Pair;
 import database_related.Crud;
+import database_related.Dao;
 
-public class UserController {
+public class UserController extends Dao{
 	
-	public static void insertUser(String uName, String fName, String lName,
-			String userEmail, String userPassword, String phone, String uAddress) throws ClassNotFoundException, SQLException
+	public UserController() {
+		super();
+	}
+	
+	private static final String tableName = "UserTable";
+	
+	public static void addUser(HttpServletRequest request) throws ClassNotFoundException, SQLException
 	{
-		ArrayList<Pair> values = new ArrayList<Pair>();
-		values.add(new Pair("userName", uName));
-		values.add(new Pair("firstName", fName));
-		values.add(new Pair("lastName", lName));
-		values.add(new Pair("email", userEmail));
-		values.add(new Pair("password", userPassword));
-		values.add(new Pair("phoneNumber", phone));
-		values.add(new Pair("address", uAddress));
-		
-		Crud.insertRecord("UserTable", values);
-		
+		ArrayList<Pair> values = parseRequest(request);
+		Crud.insertRecord(tableName, values);
 	}
 	
 	public static Boolean userNameExist(String uName) throws ClassNotFoundException, SQLException
 	{
 		ArrayList<Pair> values = new ArrayList<Pair>();
 		values.add(new Pair("userName", uName));
-		ResultSet rs = Crud.select("UserTable", values);
+		ResultSet rs = Crud.select(tableName, values);
 		Boolean resultSetEmpty = true;
 		while(rs.next())
 		{

@@ -35,7 +35,7 @@
           	<div class="form-row">
               <div class="col-md-6">
                 <label for="username">Username</label>
-                <input class="form-control" name="username" id="username" type="text" aria-describedby="nameHelp" placeholder="Enter Username" required>
+                <input class="form-control" name="userName" id="username" type="text" aria-describedby="nameHelp" placeholder="Enter Username" required>
                 <p id="usernameValidfield"> </p>
               </div>
               <input type="hidden" id="validflag" value = "false">
@@ -43,14 +43,14 @@
             <div class="form-row">
               <div class="col-md-6">
                 <label for="firstname">First name</label>
-                <input class="form-control" name="firstname" id="firstname" type="text" aria-describedby="nameHelp" placeholder="Enter first name" required>
+                <input class="form-control" name="firstName" id="firstname" type="text" aria-describedby="nameHelp" placeholder="Enter first name" required>
                 <p id="firstnameValidfield"> </p>
               </div>
             </div>
 			<div class="form-row">
               <div class="col-md-6">
                 <label for="lastname">Last name</label>
-                <input class="form-control" name="lastname" id="lastname" type="text" aria-describedby="nameHelp" placeholder="Enter last name" required>
+                <input class="form-control" name="lastName" id="lastname" type="text" aria-describedby="nameHelp" placeholder="Enter last name" required>
                 <p id="lastnameValidfield"> </p>
               </div>
             </div>
@@ -64,7 +64,7 @@
             <div class="form-row">
               <div class="col-md-6">
                 <label for="phone">Phone Number</label>
-                <input class="form-control" name="phone" id="phone" type="tel"  placeholder="Enter Phone Number">
+                <input class="form-control" name="phoneNumber" id="phone" type="tel"  placeholder="Enter Phone Number">
                 <p id="lastnameValidfield"> </p>
               </div>
             </div>
@@ -167,7 +167,6 @@
 			}
 			else{
 				$("#emailValidfield").html("ERROR! Entered Email doesn't match the upper field").css("color","red");
-				document.registerform.confirmemail.focus();
 				return false;
 			}
 		}
@@ -186,7 +185,6 @@
 			}
 			else{
 				$("#passwordValidfield").html("ERROR! Entered Password doesn't match the upper field").css("color","red");
-				document.registerform.confirmpassword.focus();
 				return false;
 			}
 		}
