@@ -2,9 +2,9 @@ package Modules;
 
 public class Notification {
 	private Integer notificationId;
-	private Notification notification;
-	private Integer userId; 
-	private Integer houseId;
+	private String notification;
+	private String userId; 
+	private String houseId;
 	
 	public Integer getId() {
 		return notificationId;
@@ -12,22 +12,22 @@ public class Notification {
 	public void setId(Integer notificationId) {
 		this.notificationId = notificationId;
 	}
-	public Notification getNotification() {
+	public String getNotification() {
 		return notification;
 	}
-	public void setNotification(Notification notification) {
+	public void setNotification(String notification) {
 		this.notification = notification;
 	}
-	public Integer getUserID() {
+	public String getUserID() {
 		return userId;
 	}
-	public void setUserID(Integer userID) {
+	public void setUserID(String userID) {
 		this.userId = userID;
 	}
-	public Integer getHouseID() {
+	public String getHouseID() {
 		return houseId;
 	}
-	public void setHouseID(Integer houseID) {
+	public void setHouseID(String houseID) {
 		this.houseId = houseID;
 	}
 }

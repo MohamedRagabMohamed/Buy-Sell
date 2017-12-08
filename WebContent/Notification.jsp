@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
+<%@ page import="Controller.NotificationController" %>
+<%@ page import="Modules.Notification" %>
+<%@ page import="java.util.ArrayList" %>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-<title>Home</title>
+<title>Notifications</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -109,9 +112,9 @@
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="CreateAlert.html">
+          <a class="nav-link" href="#">
             <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Create Alert</span>
+            <span class="nav-link-text">Link</span>
           </a>
         </li>
       </ul>
@@ -222,7 +225,35 @@
   <div class="content-wrapper">
     <div class="container-fluid">
     	<h1>sidohd</h1>
-    	
+    	<h1>Notifications</h1>
+    		<%
+    		// get user ID from the cookies
+	    		Cookie[] cookies = request.getCookies();
+	    		String userID="-1";
+	    		for( Cookie c : cookies) {
+	    			if(c.getName()=="userID") {
+	    				userID=c.getValue();
+	    			}
+	    		}
+	    		
+	    		// get all notifications
+	    		NotificationController controller;
+	    		ArrayList<Notification>list=controller.getNotifications(userID);
+	    		
+	    		// print notifications in a table
+	    		out.println("<table>");
+	    		out.println("<tr>");
+	    		out.println("<th>Notifications</th>");
+	    		out.println("</tr>");
+	    		for(Notification notification : list){
+		    		out.println("<tr>");
+		    		out.ptintln(notification.getNotification());
+		    		out.println("</tr>");
+	    		}
+	    		out.println("</table>");
+    		%>
+    		
+    		
     </div>
   </div>
     <!-- /.container-fluid-->
