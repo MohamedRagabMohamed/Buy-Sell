@@ -1,11 +1,15 @@
 package Servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Controller.UserController;
 
 /**
  * Servlet implementation class signupServlet
@@ -36,6 +40,25 @@ public class signupServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
+		String uName = request.getParameter("username");
+		String fName = request.getParameter("firstname");
+		String lName = request.getParameter("lastname");
+		String userEmail = request.getParameter("email");
+		String userPassword = request.getParameter("password");
+		String phone = request.getParameter("phone");
+		String uAddress = request.getParameter("address");
+		
+		try {
+			UserController.insertUser(uName, fName, lName, userEmail, userPassword, phone, uAddress);
+		} catch (ClassNotFoundException e) {
+			System.out.println("ERROR in SignupServlet-insertUser-ClassNotFoundException");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("ERROR in SignupServlet-insertUser-SQLException");
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect("index.html");
 		
 		//doGet(request, response);
 	}
