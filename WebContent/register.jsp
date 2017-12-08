@@ -21,8 +21,7 @@
   
   <!-- JQUERY Library-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- sign-up manipulation-->
-  <!-- <script src="C:\Users\maka\git\Buy-Sell\WebContent\js\signup.js"></script>-->
+  
 </head>
 
 <body class="bg-dark">
@@ -30,7 +29,7 @@
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">Register an Account</div>
       <div class="card-body">
-        <form name="registerform" action="signupServlet" method="post" onsubmit="return ValidateSubmit()">
+        <form id="registerform" name="registerform" action="signupServlet" method="post">
         
           <div class="form-group">
           	<div class="form-row">
@@ -98,6 +97,22 @@
               <p id="passwordValidfield">
             </div>
           </div>
+          
+          <div class="form-group">
+          	<div class="panel panel-primary">
+  				<div class="panel-heading">Captcha</div>
+  				<div class="panel-body">
+  					<img class="img-thumbnail" id="captchaimg" alt="Cannot Load Content" src="">
+		          	<p id="captchaLabel"> </p>
+		          	<input type="hidden" id="captchaValue" value="rand"> <br/>
+		          	Please Enter Text in the box :<br/>
+		          	<input type="text" id="captchaUserValue">	
+		          	<input class="btn btn-primary btn-sm" id="changeCaptchaBtn" type="button" value="Change">	
+		          	<input class="btn btn-primary btn-sm" id="checkCaptchaBtn" type="button" value="Submit">
+  				</div>
+			</div>
+          </div>
+          
           <button class="btn btn-primary btn-block" type="submit" id="submitButton">Register</button>
         </form>
         <div class="text-center">
@@ -111,6 +126,7 @@
   <script type="text/javascript">
   
   $("document").ready(function() {
+	  	
 		$("#username").on("blur", validateuserName);
 		function validateuserName()
 		{
@@ -177,24 +193,106 @@
 		
 		//////////////////////////////////////////////////////////////////////////////////////
 		
-		function ValidateSubmit() {
+		$("#registerform").on("submit",ValidateSubmit);
+		function ValidateSubmit(e){
 			var check1 = checkPassword();
 			var check2 = checkMail();
 			var check3 = $("#validflag").val();
+			var check4 = validateCaptcha();
 			console.log("check1 ::" , check1);
 			console.log("check2 ::" , check2);
 			console.log("check3 ::" , check3);
-			if(check1 == true && check2 == true && check3 == 'true')
+			console.log("check4 ::" , check4);
+			if(check1 == true && check2 == true && check3 == 'true' && check4 == true)
 			{
 				console.log("mo salah");
 				return true;
 			}
 			else
 			{
+				if(check3 == 'false')
+				{
+					document.registerform.username.focus();
+					$("#usernameValidfield").html("Please Enter a Valid Username").css("color","red");
+				}
 				return false;
 			}
 			
 		}
+		
+	//////////////////////////////////////////////////////////////////////////////////////
+	
+	var arrOfCaptcha = [
+			{
+				src: "captchaSrc/1.jpg",
+				value: "w93bx"
+			},
+			{
+				src: "captchaSrc/2.jpg",
+				value: "3m56r"
+			},
+			{
+				src: "captchaSrc/3.jpg",
+				value: "uxp4d"
+			},
+			{
+				src: "captchaSrc/4.jpg",
+				value: "urvtp"
+			},
+			{
+				src: "captchaSrc/5.jpg",
+				value: "tk58p"
+			},
+			{
+				src: "captchaSrc/6.jpg",
+				value: "sremd"
+			},
+			{
+				src: "captchaSrc/7.jpg",
+				value: "wkrh5"
+			},
+			{
+				src: "captchaSrc/8.jpg",
+				value: "459ct"
+			},
+			{
+				src: "captchaSrc/9.jpg",
+				value: "skard"
+			},
+			{
+				src: "captchaSrc/10.jpg",
+				value: "hrdx8"
+			}
+			
+		];
+	
+	window.onload = generateCaptcha();
+	$("#changeCaptchaBtn").on("click",generateCaptcha);
+	function generateCaptcha()
+	{
+		var index = Math.floor(Math.random() * (9 + 1));
+		$("#captchaimg").attr("src",arrOfCaptcha[index].src);
+		$("#captchaValue").val(arrOfCaptcha[index].value);
+	}
+	
+	$("#checkCaptchaBtn").on("click",validateCaptcha);
+	function validateCaptcha()
+	{
+		var userAnswer = $("#captchaUserValue").val().toLowerCase();
+		var realValue = $("#captchaValue").val().toLowerCase();
+		if(userAnswer == realValue)
+		{
+			$("#captchaLabel").html("Success").css("color","green");
+			return true;
+		}
+		else
+		{
+			$("#captchaLabel").html("Wrong Answer! Please Try Again").css("color","red");
+			return false;
+		}
+		
+		return false;
+	}
 		
 		
 		
