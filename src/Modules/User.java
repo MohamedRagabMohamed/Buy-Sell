@@ -1,17 +1,49 @@
 package Modules;
 
+import java.util.ArrayList;
+
 public class User {
 	private Integer userId;
 	private String userName;
 	private String email;
 	private String password;
 	private String role;
-	private String firsName;
+	private String firstName;
 	private String lastName;
 	private String profilePicture;
 	private String address;
 	private String phoneNumber;
+	private ArrayList<Advertisement> ads ;
+	public static final String [] COLUMNS_NAMES  = {"id","userName" ,"email", "password" , "role" ,"firstName" , "lastName"
+	                                              ,"profilePicture","address","phoneNumber"};
 	
+	public User() {
+		ads = new ArrayList<Advertisement>();
+	}
+	
+	public  ArrayList<Advertisement> getAds() {
+		return ads;
+	}
+
+	public void addAds( ArrayList<Advertisement> ad) {
+		ads = ad;
+	}
+	
+	public User(Integer userId, String userName, String email, String password, String role, String firstName,
+			String lastName, String profilePicture, String address, String phoneNumber) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.email = email;
+		this.password = password;
+		this.role = role;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.profilePicture = profilePicture;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+	}
+
 	public Integer getUserId() {
 		return userId;
 	}
@@ -42,11 +74,11 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getFirsName() {
-		return firsName;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFirsName(String firsName) {
-		this.firsName = firsName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	public String getLastName() {
 		return lastName;

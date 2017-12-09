@@ -6,7 +6,22 @@ public class Advertisement {
 	private Integer houseId;
 	private Integer rate;
 	private String type; 	// sell or rent
+	private String name;
 	
+	public Advertisement() {
+		
+	}
+	public Advertisement(Integer advertisementId, Integer userId, Integer houseId, Integer rate, String type) {
+		super();
+		this.advertisementId = advertisementId;
+		this.userId = userId;
+		this.houseId = houseId;
+		this.rate = rate;
+		this.type = type;
+	}
+
+
+
 	public Integer getAdvertisementId() {
 		return advertisementId;
 	}
@@ -36,5 +51,11 @@ public class Advertisement {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }
