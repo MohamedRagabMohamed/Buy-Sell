@@ -5,18 +5,57 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class UserController {
-	static Crud db ; 
-	static final String tableName  = "UserTable";
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
+import Modules.Pair;
+import database_related.Crud;
+import database_related.Dao;
+
+public class UserController extends Dao{
+	
 	public UserController() {
-		db = new Crud();
+		super();
 	}
 	
+	private static final String tableName = "UserTable";
+	
+	public static void addUser(HttpServletRequest request) throws ClassNotFoundException, SQLException
+	{
+		ArrayList<Pair> values = parseRequest(request);
+		Crud.insertRecord(tableName, values);
+	}
+	
+	public static Boolean userNameExist(String uName) throws ClassNotFoundException, SQLException
+	{
+		ArrayList<Pair> values = new ArrayList<Pair>();
+		values.add(new Pair("userName", uName));
+		ResultSet rs = Crud.select(tableName, values);
+		Boolean resultSetEmpty = true;
+		while(rs.next())
+		{
+			resultSetEmpty = false;
+		}
+		
+		if(resultSetEmpty)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
 	public User getUser(Integer id ) {
 		ArrayList<Pair>values = new ArrayList<Pair>();
 		values.add(new Pair("id",id.toString()));
 		try {
-			ResultSet user = db.select(tableName,values);
+			ResultSet user = Crud.select(tableName,values);
 			user.first();
 			User returnUser = new User(user.getInt("id"),
 									user.getString("userName"),
@@ -31,7 +70,7 @@ public class UserController {
 					);
 			ArrayList<Pair>values2 = new ArrayList<Pair>();
 			values.add(new Pair("userID",id.toString()));
-			ResultSet ads = db.select("AdvertisementTable", values2);
+			ResultSet ads = Crud.select("AdvertisementTable", values2);
 			ArrayList<Advertisement> adsList = new ArrayList<Advertisement> ();
 			while (ads.next()) {
 				Advertisement ad= new Advertisement();

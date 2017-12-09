@@ -67,7 +67,7 @@
 			</div>
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">My Ads :${user.ads[0].rate}</h4>
+					<h4 class="card-title">My Ads :</h4>
 					<div class="card-body">
 						<table class="table">
 							<tbody>
