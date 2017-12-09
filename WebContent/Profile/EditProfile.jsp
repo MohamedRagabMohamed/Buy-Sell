@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-<title>Create Alert</title>
+<title>Edit Profile</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -24,10 +24,8 @@
   <div class="content-wrapper">
     <div class="container-fluid">
     	<h1>sidohd</h1>
-    	<form action="CreateAlertServlet">
-    		<input type="text" name="status"><b> Status</b><br><br>
-    		<input type="text" name="type"><b> Type</b><br><br>
-    		<input type="text" name="size"><b> Size</b><br><br><br>
+    	<form action="Profile" method="post">
+    		<input type="text" name="firstName"  value=${user.firstName }><b> First Name</b><br><br>
     		<input type="submit">
     	</form>
     </div>

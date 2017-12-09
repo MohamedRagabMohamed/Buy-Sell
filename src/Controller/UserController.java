@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Modules.*;
 public class UserController {
 	static Crud db ; 
 	static final String tableName  = "UserTable";

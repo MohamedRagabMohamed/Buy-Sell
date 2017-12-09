@@ -26,7 +26,7 @@
 <body>
 
 	<jsp:include page="../NavBar.jsp" />
-
+	
 
 	<div class="content-wrapper">
 		<div class="container-fluid">
