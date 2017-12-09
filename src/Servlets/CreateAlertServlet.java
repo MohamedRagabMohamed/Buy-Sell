@@ -36,11 +36,12 @@ public class CreateAlertServlet extends HttpServlet {
 		String type=request.getParameter("type");
 		String size=request.getParameter("size");
 		try {
-			controller.addAlert(status, type, size, request);
+			AlertController.addAlert(status, type, size,request);
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println("DATA-BASE ERROR");
+			System.out.println("Error");
 			e.printStackTrace();
 		}
+		response.sendRedirect("index.html");
 	}
 
 	/**

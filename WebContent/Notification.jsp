@@ -252,8 +252,6 @@
 	    		}
 	    		out.println("</table>");
     		%>
-    		
-    		
     </div>
   </div>
     <!-- /.container-fluid-->
