@@ -91,4 +91,17 @@ public class UserController extends Dao{
 		return null;
 		
 	}
+	
+	public void UpdateUser(User user) throws ClassNotFoundException, SQLException {
+		ArrayList<Pair> parm = new ArrayList<Pair>();
+		parm.add(new Pair("userName",user.getUserName() ));
+		parm.add(new Pair("email",user.getEmail() ));
+		parm.add(new Pair("firstName",user.getFirstName() ));
+		parm.add(new Pair("profilePicture",user.getProfilePicture() ));
+		parm.add(new Pair("lastName",user.getLastName() ));
+		parm.add(new Pair("address",user.getAddress() ));
+		parm.add(new Pair("phoneNumber",user.getPhoneNumber() ));
+		Crud.updateRecord(tableName, parm, "UserTable.id",user.getUserId().toString() );
+	}
+	
 }
