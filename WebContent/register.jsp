@@ -35,7 +35,7 @@
           	<div class="form-row">
               <div class="col-md-6">
                 <label for="username">Username</label>
-                <input class="form-control" id="username" type="text" aria-describedby="nameHelp" placeholder="Enter Username" required>
+                <input class="form-control" name="userName" id="username" type="text" aria-describedby="nameHelp" placeholder="Enter Username" required>
                 <p id="usernameValidfield"> </p>
               </div>
               <input type="hidden" id="validflag" value = "false">
@@ -43,28 +43,28 @@
             <div class="form-row">
               <div class="col-md-6">
                 <label for="firstname">First name</label>
-                <input class="form-control" id="firstname" type="text" aria-describedby="nameHelp" placeholder="Enter first name" required>
+                <input class="form-control" name="firstName" id="firstname" type="text" aria-describedby="nameHelp" placeholder="Enter first name" required>
                 <p id="firstnameValidfield"> </p>
               </div>
             </div>
 			<div class="form-row">
               <div class="col-md-6">
                 <label for="lastname">Last name</label>
-                <input class="form-control" id="lastname" type="text" aria-describedby="nameHelp" placeholder="Enter last name" required>
+                <input class="form-control" name="lastName" id="lastname" type="text" aria-describedby="nameHelp" placeholder="Enter last name" required>
                 <p id="lastnameValidfield"> </p>
               </div>
             </div>
             <div class="form-row">
               <div class="col-md-6">
                 <label for="address">Address</label>
-                <input class="form-control" id="address" type="text" placeholder="Enter Address">
+                <input class="form-control" name="address" id="address" type="text" placeholder="Enter Address">
                 <p id="addressValidfield"> </p>
               </div>
             </div>
             <div class="form-row">
               <div class="col-md-6">
                 <label for="phone">Phone Number</label>
-                <input class="form-control" id="phone" type="tel"  placeholder="Enter Phone Number">
+                <input class="form-control" name="phoneNumber" id="phone" type="tel"  placeholder="Enter Phone Number">
                 <p id="lastnameValidfield"> </p>
               </div>
             </div>
@@ -74,7 +74,7 @@
           	<div class="form-row">
               <div class="col-md-6">
                 <label for="email">Email address</label>
-                <input class="form-control" id="email" type="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                <input class="form-control" name="email" id="email" type="email" aria-describedby="emailHelp" placeholder="Enter email" required>
               </div>
               <div class="col-md-6">
                 <label for="confirmemail">Confirm Email address</label>
@@ -88,7 +88,7 @@
           	<div class="form-row">
               <div class="col-md-6">
                 <label for="password">Password</label>
-                <input class="form-control" id="password" type="password" placeholder="Password" required>
+                <input class="form-control" name="password" id="password" type="password" placeholder="Password" required>
               </div>
               <div class="col-md-6">
                 <label for="confirmpassword">Confirm password</label>
@@ -167,7 +167,6 @@
 			}
 			else{
 				$("#emailValidfield").html("ERROR! Entered Email doesn't match the upper field").css("color","red");
-				document.registerform.confirmemail.focus();
 				return false;
 			}
 		}
@@ -186,7 +185,6 @@
 			}
 			else{
 				$("#passwordValidfield").html("ERROR! Entered Password doesn't match the upper field").css("color","red");
-				document.registerform.confirmpassword.focus();
 				return false;
 			}
 		}
