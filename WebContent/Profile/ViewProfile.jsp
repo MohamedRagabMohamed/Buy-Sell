@@ -61,6 +61,17 @@
 								<th>Phone Number :</th>
 								<td>${user.phoneNumber}</td>
 							</tr>
+							<tr>
+								<td>
+									<a href=<% 
+											User user = (User) request.getAttribute("user");
+											String tmp = "/IA-Project/editProfile?id=" +user.getUserId();
+											out.print(tmp);
+									%> >
+										<button type="button" class="btn btn-primary btn-sm">Edit Profile</button>
+									</a>
+									</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -78,7 +89,7 @@
 									<th>Edit</th>
 								</tr>
 								<%
-									User user = (User) request.getAttribute("user");
+									
 									ArrayList<Advertisement> ads = (ArrayList<Advertisement>) user.getAds();
 									for (int i = 0; i < ads.size(); i++) {
 								%>

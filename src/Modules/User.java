@@ -17,6 +17,7 @@ public class User {
 	public static final String [] COLUMNS_NAMES  = {"id","userName" ,"email", "password" , "role" ,"firstName" , "lastName"
 	                                              ,"profilePicture","address","phoneNumber"};
 	
+	
 	public User() {
 		ads = new ArrayList<Advertisement>();
 	}
@@ -103,6 +104,13 @@ public class User {
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userName=" + userName + ", email=" + email + ", password=" + password
+				+ ", role=" + role + ", firstName=" + firstName + ", lastName=" + lastName + ", profilePicture="
+				+ profilePicture + ", address=" + address + ", phoneNumber=" + phoneNumber + ", ads=" + ads + "]";
 	}
 	
 	

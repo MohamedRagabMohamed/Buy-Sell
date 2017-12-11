@@ -51,7 +51,7 @@ public class Crud {
 		ResultSet rs=stmt.executeQuery(query);
 		return rs;
 	}
-	public boolean  updateRecord (String tableName , ArrayList<Pair> values , String Left,String Right ) throws SQLException, ClassNotFoundException
+	public static boolean  updateRecord (String tableName , ArrayList<Pair> values , String Left,String Right ) throws SQLException, ClassNotFoundException
 	{
 		String sqlStatment= "UPDATE "+tableName+" SET ";
 		for (int i = 0; i < values.size(); i++) {
@@ -81,7 +81,18 @@ public class Crud {
 		//DBConnection.closeConnection();
 		return status;
 	}
-	 public static void main(String args[]) throws ClassNotFoundException, SQLException {
+	
+	
+	public int custumQuery(String sql) throws ClassNotFoundException, SQLException {
+		Connection conn=DBConnection.getConnetion();
+		PreparedStatement stmt=conn.prepareStatement(sql);
+		int status= stmt.executeUpdate();
+		//DBConnection.closeConnection();
+		return status;
+	}
+	
+	
+	public static void main(String args[]) throws ClassNotFoundException, SQLException {
 		 ArrayList<Pair>values=new ArrayList<Pair>();
 		 values.add(new Pair("userID","1"));
 		 values.add(new Pair("advID","4"));	

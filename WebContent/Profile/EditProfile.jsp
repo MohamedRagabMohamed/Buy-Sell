@@ -23,9 +23,15 @@
   
   <div class="content-wrapper">
     <div class="container-fluid">
-    	<h1>sidohd</h1>
     	<form action="Profile" method="post">
-    		<input type="text" name="firstName"  value=${user.firstName }><b> First Name</b><br><br>
+    		<input type="text" name="id"  value=${user.userId }><br><br>
+    		<b> First Name : </b> <input type="text" name="firstName"  value=${user.firstName }><br><br>
+    		<b> Last  Name : </b> <input type="text" name="lastName"  value=${user.lastName }><br><br>
+    		<b> Email      : </b> <input type="text" name="email"  value=${user.email }><br><br>
+    		<b> Username   : </b> <input type="text" name="userName"  value=${user.userName }><br><br>
+    		<b> Profile Pic: </b> <input type="text" name="profilePicture"  value=${user.profilePicture }><br><br>
+    		<b> Address    : </b> <input type="text" name="address"  value=${user.address }><br><br>
+    		<b> Phone No   : </b> <input type="text" name="phoneNumber"  value=${user.phoneNumber }><br><br>
     		<input type="submit">
     	</form>
     </div>
