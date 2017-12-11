@@ -49,7 +49,7 @@ public class signupServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("index.html");
+		response.sendRedirect("login.html");
 		
 		//doGet(request, response);
 	}

@@ -83,7 +83,7 @@ public class Crud {
 	}
 	
 	
-	public static ResultSet custumQuery(String sql) throws ClassNotFoundException, SQLException {
+	public static ResultSet customQuery(String sql) throws ClassNotFoundException, SQLException {
 		Connection con=DBConnection.getConnetion();
 		//System.out.println(query);		
 		Statement stmt=con.createStatement();

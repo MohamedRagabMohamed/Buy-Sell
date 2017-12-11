@@ -17,7 +17,7 @@ public class AdvertisementController extends Dao{
 		String sql = "SELECT * \r\n" + 
 				"FROM AdvertisementTable\r\n" + 
 				"inner JOIN HouseTable ON HouseTable.id= AdvertisementTable.houseID;";
-		ResultSet rs = Crud.custumQuery(sql);
+		ResultSet rs = Crud.customQuery(sql);
 		ArrayList<Advertisement> advertisements = new ArrayList<Advertisement>();
 		while(rs.next()) {
 			Advertisement ad = new Advertisement();
@@ -36,6 +36,31 @@ public class AdvertisementController extends Dao{
 		return advertisements;
 	}
 	
+	
+	public ArrayList<Advertisement> getAciveAds() throws ClassNotFoundException, SQLException
+	{
+		String sql = "SELECT * \r\n" + 
+				"FROM AdvertisementTable\r\n" + ";";
+		ResultSet rs = Crud.customQuery(sql);
+		ArrayList<Advertisement> activeAds = new ArrayList<Advertisement>();
+		while(rs.next()) {
+			if(rs.getBoolean("active") == true)
+			{
+				Advertisement ad = new Advertisement();
+				ad.setName(rs.getString("name"));
+				ad.setHouseID(rs.getInt("houseID"));
+				ad.setRate((int) rs.getFloat("rate"));
+				ad.setType(rs.getString("type"));
+				ad.setAdVisibility(rs.getBoolean("active"));
+				activeAds.add(ad);
+			}
+			else
+			{
+				continue;
+			}
+		}
+		return activeAds;
+	}
 	
 	
 }

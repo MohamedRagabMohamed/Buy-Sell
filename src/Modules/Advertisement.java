@@ -8,6 +8,7 @@ public class Advertisement {
 	private Integer rate;
 	private String type; 	// sell or rent
 	private String name;
+	private Boolean active;
 	
 	public Advertisement() {
 		
@@ -20,6 +21,7 @@ public class Advertisement {
 		this.houseId = houseId;
 		this.rate = rate;
 		this.type = type;
+		this.active = true;
 	}
 
 
@@ -65,5 +67,13 @@ public class Advertisement {
 	}
 	public void setHouse(House house) {
 		this.house = house;
+	}
+	public Boolean isActive()
+	{
+		return this.active;
+	}
+	public void setAdVisibility(Boolean state)
+	{
+		this.active = state;
 	}
 }
