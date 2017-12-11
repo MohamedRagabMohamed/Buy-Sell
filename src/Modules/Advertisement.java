@@ -4,6 +4,7 @@ public class Advertisement {
 	private Integer advertisementId;
 	private Integer userId;
 	private Integer houseId;
+	private House house;
 	private Integer rate;
 	private String type; 	// sell or rent
 	private String name;
@@ -11,9 +12,10 @@ public class Advertisement {
 	public Advertisement() {
 		
 	}
-	public Advertisement(Integer advertisementId, Integer userId, Integer houseId, Integer rate, String type) {
+	public Advertisement(Integer advertisementId,String name, Integer userId, Integer houseId, Integer rate, String type) {
 		super();
 		this.advertisementId = advertisementId;
+		this.name = name;	
 		this.userId = userId;
 		this.houseId = houseId;
 		this.rate = rate;
@@ -57,5 +59,11 @@ public class Advertisement {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public House getHouse() {
+		return house;
+	}
+	public void setHouse(House house) {
+		this.house = house;
 	}
 }

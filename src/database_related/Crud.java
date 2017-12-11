@@ -83,12 +83,12 @@ public class Crud {
 	}
 	
 	
-	public int custumQuery(String sql) throws ClassNotFoundException, SQLException {
-		Connection conn=DBConnection.getConnetion();
-		PreparedStatement stmt=conn.prepareStatement(sql);
-		int status= stmt.executeUpdate();
-		//DBConnection.closeConnection();
-		return status;
+	public static ResultSet custumQuery(String sql) throws ClassNotFoundException, SQLException {
+		Connection con=DBConnection.getConnetion();
+		//System.out.println(query);		
+		Statement stmt=con.createStatement();
+		ResultSet rs=stmt.executeQuery(sql);
+		return rs;
 	}
 	
 	
