@@ -95,8 +95,9 @@ public class Crud {
 	public static void main(String args[]) throws ClassNotFoundException, SQLException {
 		 ArrayList<Pair>values=new ArrayList<Pair>();
 		 values.add(new Pair("userID","1"));
-		 values.add(new Pair("advertisementID","1"));
-		 values.add(new Pair("comment","hello from michael"));
-		 insertRecord("CommentTable", values);
+		 values.add(new Pair("advID","4"));	
+		 values.add(new Pair("advID","4"));
+		 values.add(new Pair("notification","there is a new Comment from nour"));
+		 insertRecord("NotificationTable", values);
 	 }
 }
