@@ -178,15 +178,30 @@
 		{
 			var pass1 = $('#password').val();
 			var pass2 = $('#confirmpassword').val();
-			if(pass1 === pass2)
+			if(pass1.length < 4)
 			{
-				$("#passwordValidfield").html("Password Fields matched successfully").css("color","green");
-				return true;
-			}
-			else{
-				$("#passwordValidfield").html("ERROR! Entered Password doesn't match the upper field").css("color","red");
+				$("#passwordValidfield").html("ERROR! Short password, password must be more than 3 characters").css("color","red");
 				return false;
 			}
+			else if(pass1 === "")
+			{
+				$("#passwordValidfield").html("ERROR! Empty Password").css("color","red");
+				return false;
+			}
+			else
+			{
+				if(pass1 === pass2)
+				{
+					$("#passwordValidfield").html("Password Fields matched successfully").css("color","green");
+					return true;
+				}
+				else{
+					$("#passwordValidfield").html("ERROR! Entered Password doesn't match the upper field").css("color","red");
+					return false;
+				}
+			}
+			
+			
 		}
 		
 		//////////////////////////////////////////////////////////////////////////////////////
