@@ -4,8 +4,15 @@ public class Notification {
 	private Integer notificationId;
 	private String notification;
 	private String userId; 
-	private String houseId;
+	private String advId;
+	private String advName;
 	
+	public String getAdvName() {
+		return advName;
+	}
+	public void setAdvName(String advName) {
+		this.advName = advName;
+	}
 	public Integer getId() {
 		return notificationId;
 	}
@@ -24,10 +31,10 @@ public class Notification {
 	public void setUserID(String userID) {
 		this.userId = userID;
 	}
-	public String getHouseID() {
-		return houseId;
+	public String getAdvID() {
+		return advId;
 	}
-	public void setHouseID(String houseID) {
-		this.houseId = houseID;
+	public void setAdvID(String advId) {
+		this.advId = advId;
 	}
 }
