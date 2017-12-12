@@ -3,6 +3,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="Modules.User"%>
 <%@page import="Modules.Advertisement"%>
+<%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -27,25 +28,63 @@
 			body {
     					padding-top: 3cm;
 				 }
+		    h2 {
+  					padding-left: 1cm;
+		         }
 		</style>
 	</head>
 <body>
 
 	<jsp:include page="./NavBar.jsp" />
+	
+	<%
+		AdvertisementController adControl = new AdvertisementController();
+		ArrayList<Advertisement> activeAds = new ArrayList<Advertisement>();
+		
+		try {
+			activeAds = adControl.getAciveAds();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+	%>
 
 	
 	<div class="content-wrapper">
 		<div class="container-fluid">
 			<div class="card">
+				<h2>Admin Panel - System Advertisements</h2>
 				<div class="card-body">
 					<table id="added-advertisements" class="table">
 							<tr>
 								<th>Advertisement Name</th>
 								<th>Suspend Advertisement</th>
 								<th>Delete Advertisement</th>
+								<th>Suspension State</th>
 							</tr>
+							<%
+								
+								for(int i = 0 ; i < activeAds.size() ; i++)
+								{
+									Advertisement currAd = activeAds.get(i);
+									
+									String delbtnID = " id = \"delBtn" + i + "\" ";
+									String susbtnID = " id = \"susBtn" + i + "\" ";
+									String btnValue = " value = \"" + currAd.getAdvertisementId() + "\" " ;
+									String delbtnAttr = delbtnID + btnValue;
+									String susbtnAttr = susbtnID + btnValue;
+									
+									out.println("<tr>");
+									out.println("<td>" + "<p>" + currAd.getName() + "</p>" + "</td>");
+									out.println("<td>" + "<button " + susbtnAttr + " type=\"text\" class=\"btn btn-primary btn-sm\">Suspend</button>" + "</td>");
+									out.println("<td>" + "<button " + delbtnAttr + " type=\"text\" class=\"btn btn-primary btn-sm\">Delete </button>" + "</td>");
+									out.println("</tr>");
+								}
+							
+							%>
 					</table>
-					<button type="button" id="btn1">Load</button>
 				</div>
 			</div>
 		</div>
@@ -54,53 +93,65 @@
 <script type="text/javascript">
   
   $("document").ready(function(){
-	  $("#btn1").on("click", getAllActiveAds);
-	  function getAllActiveAds()
-	  {
-		  $.ajax({
-		        url: "activeAdsSevlet",
-		        type: 'GET',
-		        
-		        success: function (data) {
-		            $("tr:has(td)").remove();
-		            console.log(data);  // for testing only
-		            //var res=$.parseJSON(data);
-		            var values = [];
-		            values = data;
-		 
-		            $.each(values, function (index, ad) {
-		 
-		                var td_nameField = $("<td/>");
-	                    var span = $("<span class='label label-info' style='margin:4px;padding:4px' />");
-	                    span.text(ad.name);
-	                    td_nameField.append(span);
-	                    
-	                    var td_suspendField = $("<td/>");
-	                    var suspendButton = $("<button type=\"text\" > <span class=\"glyphicon glyphicon-minus-sign\"> </span> </button>");
-	                    suspendButton.id('suspendButton' + index);
-	                    td_suspendField.append(suspendButton);
-
-		 
-		                var td_deleteField = $("<td/>");
-	                    var delButton = $("<button type=\"text\" > <span class=\"glyphicon glyphicon-remove-sign\"> </span> </button>");
-	                    delButton.id('delButton' + index);
-	                    td_deleteField.append(delButton);
-	                    
-	                    
-		 
-		                $("#added-advertisements").append($('<tr/>')
-		                        .append($('<td/>').html("<a href='"+555555555555+"'>"+a7aaaaaaaaaaaaaaa+"</a>"))
-		                        .append(td_suspendField)
-		                        .append(td_deleteField)
-		                );
-		 
-		            }); 
-		        },
-		        error:function(data,status,er) {
-		            alert("error: "+data+" status: "+status+" er:"+er);
-		        }
-		    });
-	  }
+	  
+	  $("body").on('click', ":button", function() {
+		  
+    		var currentBtnId = $(this).attr('id');
+    		var currentAdId = $(this).attr('value');
+    		console.log("btnID :: ", currentBtnId);
+    		console.log("AdID :: ", currentAdId);
+    		var delSubString = "delBtn";
+    		var susSubString = "susBtn";
+    		
+    		if(currentBtnId.indexOf(delSubString) !== -1) // delbuttonCase
+    		{
+    			$.ajax({
+    		        url: "adminDelAdServlet",
+    		        type: 'POST',
+    		        data: {adID: currentAdId},
+    		        
+    		        success: function (response) {
+    		        	if(response === 'true'){
+    		        		$("#"+currentBtnId).closest("tr").remove();
+    					}
+    		        	else{
+    		        		alert('Request Success ... BUT == false');
+    		        	}
+    		        },
+    		        error:function(data,status,er) {
+    		            alert("Request Failed !!!\n" + "error: "+data+" status: "+status+" er:"+er);
+    		        }
+    		    });
+    			
+    		}
+    		else if(currentBtnId.indexOf(susSubString) !== -1) // susbuttonCase
+    		{
+    			$.ajax({
+    		        url: "adminsuspendADServlet",
+    		        type: 'POST',
+    		        data: {adID: currentAdId},
+    		        
+    		        success: function (response) {
+    		        	if(response === 'true'){
+    		        		//alert("Advertisement Suspended successfully !!!");
+    		        		$("#"+currentBtnId).closest('tr').append('<td>'+ "(SUSPENDED)" +'</td>');
+    					}
+    		        	else{
+    		        		alert('Request Success ... BUT == false');
+    		        		
+    		        	}
+    		        },
+    		        error:function(data,status,er) {
+    		        	alert("Request Failed !!!\n" + "error: "+data+" status: "+status+" er:"+er);
+    		        }
+    		    });
+    			
+    		}
+    		else{
+    			alert('mys7sh kdaaaaaaaaaaaaaa');
+    		}
+	  
+	  });
 	  
 	  
   });

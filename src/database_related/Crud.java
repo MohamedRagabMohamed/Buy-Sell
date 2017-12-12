@@ -51,8 +51,9 @@ public class Crud {
 		ResultSet rs=stmt.executeQuery(query);
 		return rs;
 	}
-	public static boolean  updateRecord (String tableName , ArrayList<Pair> values , String Left,String Right ) throws SQLException, ClassNotFoundException
+	public static boolean  updateRecord (String tableName , ArrayList<Pair> values , String Left,String Right ) throws ClassNotFoundException, SQLException
 	{
+		boolean state = true;
 		String sqlStatment= "UPDATE "+tableName+" SET ";
 		for (int i = 0; i < values.size(); i++) {
 			sqlStatment+=values.get(i).first+" = \'"+values.get(i).second+"\'";
@@ -61,16 +62,22 @@ public class Crud {
 		}
 		sqlStatment+=" WHERE "+Left+" = \'"+Right+"\' ; ";
 		System.out.println(sqlStatment);
-		Connection con=  DBConnection.getConnetion();
+		Connection con = DBConnection.getConnetion();
 		PreparedStatement st=  con.prepareStatement(sqlStatment);
-		st.executeUpdate(); 
+		
+		try {
+			st.executeUpdate();
+		} catch (SQLException e) {
+			state = false;
+			e.printStackTrace();
+		} 
 		//DBConnection.closeConnection();
-		return true ;
+		return state;
 	}
 	
 	
 	
-	public int delete(String tableName,String colmName,String colmValue) throws SQLException, ClassNotFoundException {
+	public static int delete(String tableName,String colmName,String colmValue) throws SQLException, ClassNotFoundException {
 	    Connection conn=DBConnection.getConnetion();
 	    int status=1;
 		String sql="delete  from "+tableName+" where "+colmName+" = \'"+colmValue+"\' ;";

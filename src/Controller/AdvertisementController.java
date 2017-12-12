@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import Modules.Advertisement;
 import Modules.House;
+import Modules.Pair;
 import database_related.Crud;
 import database_related.Dao;
 
@@ -47,6 +48,7 @@ public class AdvertisementController extends Dao{
 			if(rs.getBoolean("active") == true)
 			{
 				Advertisement ad = new Advertisement();
+				ad.setAdvertisementId(rs.getInt("id"));
 				ad.setName(rs.getString("name"));
 				ad.setHouseID(rs.getInt("houseID"));
 				ad.setRate((int) rs.getFloat("rate"));
@@ -60,6 +62,23 @@ public class AdvertisementController extends Dao{
 			}
 		}
 		return activeAds;
+	}
+	
+	public boolean deleteAd(String adID) throws ClassNotFoundException, SQLException
+	{
+		int rowsAffected = Crud.delete(tableName, "id", adID);
+		if(rowsAffected == 0)
+			return false;
+		else
+			return true;
+	}
+	
+	public boolean updateAdVisibility(String adID) throws ClassNotFoundException, SQLException
+	{
+		ArrayList<Pair> values = new ArrayList<Pair>();
+		values.add(new Pair("active", "0"));
+		boolean state = Crud.updateRecord(tableName, values, "id", adID);
+		return state;			
 	}
 	
 	
