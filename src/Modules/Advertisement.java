@@ -24,8 +24,6 @@ public class Advertisement {
 		this.active = true;
 	}
 
-
-
 	public Integer getAdvertisementId() {
 		return advertisementId;
 	}

@@ -10,8 +10,11 @@ public class House {
 	private String images; 	//delemiter = '##'
 	private String longitude;
 	private String latitude;
-	
-	
+
+	public House() {
+
+	}
+
 	public Integer getHouseId() {
 		return houseId;
 	}
@@ -66,6 +69,6 @@ public class House {
 	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
-	
-	
+
+
 }
