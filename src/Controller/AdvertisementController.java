@@ -76,8 +76,8 @@ public class AdvertisementController extends Dao{
 	
 	public ArrayList<Advertisement> getAllAds() throws ClassNotFoundException, SQLException{
 		String sql = "SELECT * \r\n" + 
-				"FROM AdvertisementTable\r\n" + 
-				"inner JOIN HouseTable ON HouseTable.id= AdvertisementTable.houseID;";
+				"FROM superno1_buysell.AdvertisementTable\r\n" + 
+				"inner JOIN superno1_buysell.HouseTable ON superno1_buysell.HouseTable.id= superno1_buysell.AdvertisementTable.houseID;";
 		ResultSet rs = Crud.customQuery(sql);
 		ArrayList<Advertisement> advertisements = new ArrayList<Advertisement>();
 		while(rs.next()) {
