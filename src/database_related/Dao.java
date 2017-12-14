@@ -28,7 +28,7 @@ public class Dao {
 		for (int i = 0; i < map.size(); i++) {
 			if (isUnwantedKey(keys.get(i)))
 				continue;
-			if(keys.get(i).equals("password"))
+			if(keys.get(i).equals("zz"))
 				try {
 					requestData.add(new Pair(keys.get(i), encrypt(request.getParameter(keys.get(i)))));
 				} catch (Exception e) {

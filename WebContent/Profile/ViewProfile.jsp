@@ -50,10 +50,6 @@
 								<td>${user.email}</td>
 							</tr>
 							<tr>
-								<th>Role :</th>
-								<td>${user.role}</td>
-							</tr>
-							<tr>
 								<th>Address :</th>
 								<td>${user.address}</td>
 							</tr>
@@ -85,8 +81,8 @@
 								<tr>
 									<th>Ad Name</th>
 									<th>Rate</th>
-									<th>View</th>
 									<th>Edit</th>
+									<th>View</th>
 								</tr>
 								<%
 									
@@ -104,7 +100,11 @@
 											out.print(ads.get(i).getRate());
 										%>
 									</td>
-									<td><a href="#"> <span class="fa fa-fw fa-pencil"></span>
+									<td><a href="
+										<%
+											out.print("EditAdvertisementServlet?id="+ads.get(i).getAdvertisementId());
+										%>
+									"> <span class="fa fa-fw fa-pencil"></span>
 									</a></td>
 									<td><a href="#"> <span class="fa fa-fw fa-film"></span>
 									</a></td>

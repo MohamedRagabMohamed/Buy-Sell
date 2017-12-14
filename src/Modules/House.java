@@ -14,7 +14,17 @@ public class House {
 	public House() {
 
 	}
-
+	public House(Integer HouseId, String size, String description, String floor, String status, String type, String images, String longitude,  String latitude) {
+		this.houseId = HouseId;
+		this.description = description;
+		this.size = size;
+		this.floor = floor;
+		this.type = type;
+		this.status = status;
+		this.longitude = longitude;
+		this.images = images;
+		this.latitude = latitude;
+	}
 	public Integer getHouseId() {
 		return houseId;
 	}

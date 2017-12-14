@@ -54,7 +54,7 @@ public class activeAdsSevlet extends HttpServlet {
 			Advertisement currAd = activeAds.get(i);
 			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 			System.out.println("Name :: " + currAd.getName());
-			System.out.println("Status :: " + currAd.isActive());
+			System.out.println("Status :: " + currAd.getActive());
 			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 		}
 		System.out.println("activeSize :: " + activeAds.size());

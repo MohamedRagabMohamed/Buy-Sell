@@ -79,7 +79,7 @@ public class UpdateAdvertisementServlet extends HttpServlet {
 		Advertisement advertisement = new Advertisement();
 		advertisement.setName(advName);
 		advertisement.setType(advType);
-		advertisement.setHouseID(Integer.parseInt(houseID));
+		advertisement.setHouseId(Integer.parseInt(houseID));
 
 		try {
 			advController.updateAdvertisement(advertisement);

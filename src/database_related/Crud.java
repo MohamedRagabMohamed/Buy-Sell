@@ -12,7 +12,7 @@ import Modules.Pair;
 public class Crud {
 	public static void insertRecord(String tableName,ArrayList<Pair>values) throws ClassNotFoundException, SQLException {
 		Connection con=DBConnection.getConnetion();
-		tableName = "superno1_buysell."+tableName;
+		//tableName = "superno1_buysell."+tableName;
 		String query ="INSERT INTO "+tableName+" (";
 		for(int i=0 ; i<values.size() ; i++) {
 			query+=values.get(i).first;
@@ -33,7 +33,7 @@ public class Crud {
 		stmt.executeUpdate(query);
 	}
 	public static ResultSet select(String tableName,ArrayList<Pair>values) throws ClassNotFoundException, SQLException {
-		tableName = "superno1_buysell."+tableName;
+		//tableName = "superno1_buysell."+tableName;
 		Connection con=DBConnection.getConnetion();
 		String query ="SELECT * FROM "+tableName;
 		if(values.size()!=0) {
@@ -55,7 +55,7 @@ public class Crud {
 	}
 	public static boolean  updateRecord (String tableName , ArrayList<Pair> values , String Left,String Right ) throws ClassNotFoundException, SQLException
 	{
-		tableName = "superno1_buysell."+tableName;
+		//tableName = "superno1_buysell."+tableName;
 		boolean state = true;
 		String sqlStatment= "UPDATE "+tableName+" SET ";
 		for (int i = 0; i < values.size(); i++) {
@@ -81,7 +81,7 @@ public class Crud {
 	
 	
 	public static int delete(String tableName,String colmName,String colmValue) throws SQLException, ClassNotFoundException {
-		tableName = "superno1_buysell."+tableName;
+		//tableName = "superno1_buysell."+tableName;
 		Connection conn=DBConnection.getConnetion();
 	    int status=1;
 		String sql="delete  from "+tableName+" where "+colmName+" = \'"+colmValue+"\' ;";

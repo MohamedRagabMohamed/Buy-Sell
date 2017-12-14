@@ -76,9 +76,9 @@ public class UserController extends Dao{
 				Advertisement ad= new Advertisement();
 				ad.setName(ads.getString("name"));
 				ad.setAdvertisementId(ads.getInt("id") );
-				ad.setUserID(ads.getInt("userID"));
-				ad.setHouseID(ads.getInt("houseID"));
-				ad.setRate(ads.getInt("rate"));
+				ad.setUserId(ads.getInt("userID"));
+				ad.setHouseId(ads.getInt("houseID"));
+				ad.setRate(ads.getString("rate"));
 				ad.setType(ads.getString("type"));
 				adsList.add(ad);
 			}
