@@ -39,8 +39,8 @@ public class EditAdvertisementServlet extends HttpServlet {
 		//		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		// advId haygeli mn nour lama el user yados 3ala edit ll e3lan
-		Integer advId = Integer.parseInt(request.getParameter("id"));
-		Advertisement advertisement = advController.getAdvetisement(advId);
+//		Integer advId = Integer.parseInt(request.getParameter("id"));
+		Advertisement advertisement = advController.getAdvetisement(2);
 		House house = houseController.getHouse(advertisement.getHouseId());
 		
 		request.setAttribute("advertisement", advertisement);

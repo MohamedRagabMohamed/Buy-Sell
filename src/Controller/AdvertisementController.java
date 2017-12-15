@@ -39,7 +39,7 @@ public class AdvertisementController extends Dao{
 		ArrayList<Pair>advertisementValues=new ArrayList<Pair>();
 		advertisementValues.add(new Pair("userID",userID));
 		advertisementValues.add(new Pair("houseID",houseID));
-		advertisementValues.add(new Pair("rate",String.valueOf(advertisement.getRate())));
+		advertisementValues.add(new Pair("rate",advertisement.getRate()));
 		advertisementValues.add(new Pair("type",advertisement.getType()));
 		advertisementValues.add(new Pair("name",advertisement.getName()));
 		advertisementValues.add(new Pair("active",String.valueOf(1)));

@@ -26,7 +26,7 @@ public class DBConnection {
 
 	private static String user = "root";
 	private static String pass = "root";
-	private static String database = "new_schema";
+	private static String database = "buy-sell";
 	public static Connection getConnetion() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
