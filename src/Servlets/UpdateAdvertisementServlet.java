@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Controller.AdvertisementController;
 import Controller.HouseController;
@@ -87,7 +88,8 @@ public class UpdateAdvertisementServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		response.sendRedirect("/Profile?id="+userId);
+		HttpSession s = request.getSession();
+		response.sendRedirect("/IA-Project/Profile?id="+s.getAttribute("userID"));
 	}
 
 	/**

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Controller.AdvertisementController;
 import Controller.HouseController;
@@ -62,7 +63,7 @@ public class CreateAdvertisementServlet extends HttpServlet {
 		Advertisement advertisement = new Advertisement();
 		advertisement.setName(advName);
 		advertisement.setType(advType);
-		advertisement.setRate("0#0#0#0#0");
+		advertisement.setRate("0");
 		advertisement.setActive(true);
 		try {
 			houseController.addHouse(house);
@@ -71,7 +72,8 @@ public class CreateAdvertisementServlet extends HttpServlet {
 			System.out.println("DATA-BASE ERROR");
 			e.printStackTrace();
 		}
-		//		response.sendRedirect("/Profile?id="+userId);
+		HttpSession s = request.getSession();
+		response.sendRedirect("/IA-Project/Profile?id="+s.getAttribute("userID"));
 	}
 
 	/**
