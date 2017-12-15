@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import Modules.Advertisement;
 import Modules.Comment;
@@ -26,18 +27,19 @@ public class AdvertisementController extends Dao{
 	
 	public void addAdvertiesement(Advertisement advertisement,String longitude,String latitude,HttpServletRequest request) throws ClassNotFoundException, SQLException {
 
-		//		Cookie[] cookies = request.getCookies();
-		String userID="1";
-		//		for( Cookie c : cookies) {
-		//			if(c.getName()=="userID") {
-		//				userID=c.getValue();
-		//			}
-		//		}
+//				Cookie[] cookies = request.getCookies();
+//				String userID="1";
+//				for( Cookie c : cookies) {
+//					if(c.getName()=="userID") {
+//						userID=c.getValue();
+//					}
+//				}
 
+		HttpSession s = request.getSession();
 		String houseID = houseController.getHouseId(longitude, latitude);
 
 		ArrayList<Pair>advertisementValues=new ArrayList<Pair>();
-		advertisementValues.add(new Pair("userID",userID));
+		advertisementValues.add(new Pair("userID",String.valueOf(s.getAttribute("userID"))));
 		advertisementValues.add(new Pair("houseID",houseID));
 		advertisementValues.add(new Pair("rate",advertisement.getRate()));
 		advertisementValues.add(new Pair("type",advertisement.getType()));

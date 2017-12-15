@@ -41,7 +41,7 @@ public class CreateAlertServlet extends HttpServlet {
 			System.out.println("Error");
 			e.printStackTrace();
 		}
-		response.sendRedirect("index.html");
+		response.sendRedirect("Home");
 	}
 
 	/**
