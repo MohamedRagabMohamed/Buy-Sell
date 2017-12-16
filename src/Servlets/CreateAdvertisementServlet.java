@@ -63,7 +63,7 @@ public class CreateAdvertisementServlet extends HttpServlet {
 		Advertisement advertisement = new Advertisement();
 		advertisement.setName(advName);
 		advertisement.setType(advType);
-		advertisement.setRate("0");
+		advertisement.setRate("0#0#0#0#0");
 		advertisement.setActive(true);
 		try {
 			houseController.addHouse(house);

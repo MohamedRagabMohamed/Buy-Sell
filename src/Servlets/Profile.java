@@ -34,7 +34,6 @@ public class Profile extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		System.out.println("ID = " + id);
 		User user = userController.getUser(id);
 		request.setAttribute("user", user);
 		request.getRequestDispatcher("Profile/ViewProfile.jsp").forward(request, response);

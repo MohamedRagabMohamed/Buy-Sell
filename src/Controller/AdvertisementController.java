@@ -86,6 +86,7 @@ public class AdvertisementController extends Dao{
 		while(rs.next()) {
 			Advertisement ad = new Advertisement();
 			House home = new House();
+			ad.setAdvertisementId(rs.getInt("id"));
 			ad.setName(rs.getString("name"));
 			ad.setHouseId(rs.getInt("houseID"));
 			ad.setRate((rs.getString("rate")));
@@ -178,7 +179,7 @@ public class AdvertisementController extends Dao{
 												Adv.getString("rate"),
 												Adv.getString("type")
 				);
-		System.out.println(myAdvertisementData.getRate());
+		System.out.println("Rate " + myAdvertisementData.getRate());
 		myAdvertisementData.setComments(commentss);
 		MyId.clear();
 		MyId.add( new Pair( "id" , myAdvertisementData.getHouseId().toString() ) );

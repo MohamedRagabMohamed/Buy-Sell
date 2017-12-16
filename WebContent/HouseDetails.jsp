@@ -110,11 +110,9 @@ h1 { font-size: 1.5em; margin: 10px; }
 		<div class="container-fluid">
 
 			<%
-				out.println("l2aa");
 				Advertisement myAd = (Advertisement) request.getAttribute("Advertisement");
 				House myHouse = (House) request.getAttribute("House");
 				String images = myHouse.getImages();
-				out.println("l2aa");
 				String uName = (String) request.getAttribute("UserName");
 				ArrayList<String> usernames = new ArrayList<String>();
 				ArrayList<Comment> comments = new ArrayList<Comment>();

@@ -106,7 +106,9 @@
 										%>
 									"> <span class="fa fa-fw fa-pencil"></span>
 									</a></td>
-									<td><a href="#"> <span class="fa fa-fw fa-film"></span>
+									<td><a href=<%
+											out.print("HouseDe?adId="+ads.get(i).getAdvertisementId());
+									%>> <span class="fa fa-fw fa-film"></span>
 									</a></td>
 								</tr>
 

@@ -103,7 +103,10 @@
 										%>
 									</td>
 									<td>
-									<a href="#"> <span class="fa fa-fw fa-film"></span>
+									<a href=<%
+										String tmp = "/IA-Project/HouseDe?adId="+ads.get(i).getAdvertisementId();
+										out.print(tmp);
+									%>> <span class="fa fa-fw fa-film"></span>
 									</a></td>
 								</tr>
 

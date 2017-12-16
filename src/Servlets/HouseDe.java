@@ -47,7 +47,7 @@ public class HouseDe extends HttpServlet {
 			{
 				my_id = Integer.parseInt(request.getParameter("adId"));
 			}
-			myAd = mycon.getAdvertismentR(my_id );
+			myAd = mycon.getAdvertismentR(my_id);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

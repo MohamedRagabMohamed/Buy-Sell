@@ -5,6 +5,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="/IA-Project/Home">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text">Home</span>
+          </a>
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href=<%
         	HttpSession s = request.getSession();
@@ -17,7 +23,7 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="/IA-Project/CreateAdvertisement.html">
             <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Create Adv</span>
+            <span class="nav-link-text">Create Advertisement</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
