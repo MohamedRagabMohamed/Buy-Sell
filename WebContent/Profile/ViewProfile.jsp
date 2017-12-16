@@ -85,7 +85,6 @@
 									<th>View</th>
 								</tr>
 								<%
-									
 									ArrayList<Advertisement> ads = (ArrayList<Advertisement>) user.getAds();
 									for (int i = 0; i < ads.size(); i++) {
 								%>

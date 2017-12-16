@@ -16,16 +16,21 @@ public class LoginController extends Dao {
 		values.add(new Pair("userName", userName));
 		values.add(new Pair("password", password));
 		ResultSet rs = Crud.select("UserTable", values);
-		System.out.println(rs.getFetchSize());
-		if(rs.next()) {
-			rs.first();
-			int id=rs.getInt("id");
+		int id = -1;
+//		while(rs.next()) {
+			id = rs.getInt("id");
 			System.out.println("id = "+id);
-			return id;
-		}else {
-			System.out.println("hello -1");
-			return -1;
-		}
+//		}
+		return id;
+//		if(rs.next()) {
+//			rs.first();
+//			int id=rs.getInt("id");
+//			System.out.println("id = "+id);
+//			return id;
+//		}else {
+//			System.out.println("hello -1");
+//			return -1;
+//		}
 	
 	}
 }

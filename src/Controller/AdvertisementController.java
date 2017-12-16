@@ -34,10 +34,11 @@ public class AdvertisementController extends Dao{
 //						userID=c.getValue();
 //					}
 //				}
+		
+		String houseID = houseController.getHouseId(longitude, latitude);
+		System.out.println("HouseID: " + houseID);
 
 		HttpSession s = request.getSession();
-		String houseID = houseController.getHouseId(longitude, latitude);
-
 		ArrayList<Pair>advertisementValues=new ArrayList<Pair>();
 		advertisementValues.add(new Pair("userID",String.valueOf(s.getAttribute("userID"))));
 		advertisementValues.add(new Pair("houseID",houseID));

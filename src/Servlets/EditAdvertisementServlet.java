@@ -40,6 +40,7 @@ public class EditAdvertisementServlet extends HttpServlet {
 
 		Integer advId = Integer.parseInt(request.getParameter("id"));
 		Advertisement advertisement = advController.getAdvetisement(advId);
+		System.out.println("HOUSE ID: " + advertisement.getHouseId());
 		House house = houseController.getHouse(advertisement.getHouseId());
 		
 		request.setAttribute("advertisement", advertisement);
