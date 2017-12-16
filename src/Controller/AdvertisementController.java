@@ -149,13 +149,14 @@ public class AdvertisementController extends Dao{
 	
 	public Advertisement getAdvertismentR(Integer ID) throws ClassNotFoundException, SQLException
 	{
-		Advertisement myAdvertisementData = null;
+		Advertisement myAdvertisementData = new Advertisement();
 		ArrayList<Pair> MyId = new ArrayList<>();
 		MyId.add( new Pair( "id" , ID.toString() ) );
 		ResultSet Adv = Crud.select("AdvertisementTable", MyId);
 		MyId.clear();
 		MyId.add( new Pair( "advertisementID" , ID.toString() ) );
 		ResultSet AdvComments = Crud.select("CommentTable", MyId);
+		System.out.println("NAME111: " + Adv.getString("name"));
 		//System.out.println("SIZE: " + AdvComments.getRow());
 		ArrayList<Comment> commentss = new ArrayList<Comment>();
 		AdvComments.first();
@@ -171,20 +172,22 @@ public class AdvertisementController extends Dao{
 			comment.setUserId(AdvComments.getInt("userID"));
 			commentss.add(comment);
 		}
-		Adv.first();
+//		Adv.first();
 		myAdvertisementData = new Advertisement(Adv.getInt("id"),
 												Adv.getString("name"),
-												Adv.getInt("userId"),
-												Adv.getInt("houseId"),
+												Adv.getInt("userID"),
+												Adv.getInt("houseID"),
 												Adv.getString("rate"),
 												Adv.getString("type")
 				);
-		System.out.println("Rate " + myAdvertisementData.getRate());
+		System.out.println("HOUSE1: " + myAdvertisementData.getHouseId());
 		myAdvertisementData.setComments(commentss);
+		System.out.println("HOUSE2: " + myAdvertisementData.getHouseId());
 		MyId.clear();
 		MyId.add( new Pair( "id" , myAdvertisementData.getHouseId().toString() ) );
+		System.out.println("NAME222 ");
 		ResultSet house =  Crud.select("HouseTable", MyId);
-		house.first();
+//		house.first();
 		House newHouse = new House(house.getInt("id"),
 								 house.getString("size"),
 								 house.getString("description"),
@@ -195,6 +198,7 @@ public class AdvertisementController extends Dao{
 								 house.getString("longitude"),
 								 house.getString("latitude")
 				);
+		System.out.println("NAME222 " + myAdvertisementData.getName());
 		//this.UserID = myAdvertisementData.getUserId();
 		MyId.clear();
 		MyId.add( new Pair( "id" , myAdvertisementData.getUserId().toString() ) );

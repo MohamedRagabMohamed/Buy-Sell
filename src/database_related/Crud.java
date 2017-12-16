@@ -51,6 +51,8 @@ public class Crud {
 		//System.out.println(query);		
 		Statement stmt=con.createStatement();
 		ResultSet rs=stmt.executeQuery(query);
+		rs.last();
+		System.out.println("TableName" + tableName + " " + rs.getRow());
 		return rs;
 	}
 	public static boolean  updateRecord (String tableName , ArrayList<Pair> values , String Left,String Right ) throws ClassNotFoundException, SQLException

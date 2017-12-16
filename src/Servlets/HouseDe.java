@@ -104,7 +104,7 @@ public class HouseDe extends HttpServlet {
 		}
 		
 		//System.out.println(11);
-		System.out.println(myAd.getRate());
+		System.out.println("Name: " + myAd.getName());
 		String [] stars = myAd.getRate().split("#");
 		String [] radios = {"","","","",""};
 		String finalRate = "";

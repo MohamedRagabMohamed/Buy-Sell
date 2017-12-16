@@ -30,7 +30,7 @@ public class DBConnection {
 	public static Connection getConnetion() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
-		String connectionUrl = "jdbc:mysql://localhost/" + database;
+		String connectionUrl = "jdbc:mysql://localhost:3306/" + database;
 		conn = DriverManager.getConnection(connectionUrl, user, pass);
 		return conn;
 	}
