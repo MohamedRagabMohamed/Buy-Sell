@@ -39,6 +39,7 @@ public class usernameAjaxServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uName = request.getParameter("username");
+		System.out.println(uName);
 		Boolean userExists = true;
 		try {
 			userExists = UserController.userNameExist(uName);

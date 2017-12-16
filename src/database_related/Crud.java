@@ -28,7 +28,7 @@ public class Crud {
 		}
 		query+="' ";
 		query+=" ) ;";
-		//System.out.println(query);		
+		System.out.println(query);		
 		Statement stmt=con.createStatement();
 		stmt.executeUpdate(query);
 	}
@@ -48,11 +48,11 @@ public class Crud {
 			}
 		}
 		query+=" ;";
-		//System.out.println(query);		
+		System.out.println(query);		
 		Statement stmt=con.createStatement();
 		ResultSet rs=stmt.executeQuery(query);
-		rs.last();
-		System.out.println("ROW: " + rs.getRow());
+		//rs.last();
+		//System.out.println("ROW: " + rs.getRow());
 		return rs;
 	}
 	public static boolean  updateRecord (String tableName , ArrayList<Pair> values , String Left,String Right ) throws ClassNotFoundException, SQLException
@@ -108,9 +108,9 @@ public class Crud {
 	public static void main(String args[]) throws ClassNotFoundException, SQLException {
 		 ArrayList<Pair>values=new ArrayList<Pair>();
 		 values.add(new Pair("userID","1"));
-		 values.add(new Pair("advID","4"));	
-		 values.add(new Pair("advID","4"));
-		 values.add(new Pair("notification","there is a new Comment from nour"));
-		 insertRecord("NotificationTable", values);
+		 values.add(new Pair("type","sha2a"));	
+		 values.add(new Pair("size","2012"));
+		 values.add(new Pair("status","finished"));
+		 insertRecord("AlertTable", values);
 	 }
 }

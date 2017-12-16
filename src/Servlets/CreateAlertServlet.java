@@ -35,6 +35,7 @@ public class CreateAlertServlet extends HttpServlet {
 		String status=request.getParameter("status");
 		String type=request.getParameter("type");
 		String size=request.getParameter("size");
+		System.out.println("type   : "+type);
 		try {
 			AlertController.addAlert(status, type, size,request);
 		} catch (ClassNotFoundException | SQLException e) {
