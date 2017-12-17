@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/*public class DBConnection {
+public class DBConnection {
 	 
 	 private static String user = "root";
 	 private static String pass = "root";
@@ -18,6 +18,7 @@ import java.sql.SQLException;
 	 }
 	 //Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname", “UserName",“Password");
 }
+/*
 public class DBConnection {
 
 	private static String user = "root";
@@ -34,7 +35,8 @@ public class DBConnection {
 }
 
 
-*/
+
+/*
 public class DBConnection {
 	 
 	 //String dbURL = "jdbc:sqlserver://localhost\\sqlexpress";
@@ -51,4 +53,4 @@ public class DBConnection {
         return conn;
 	 }
 }    
-
+*/

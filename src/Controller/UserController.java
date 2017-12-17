@@ -69,7 +69,7 @@ public class UserController extends Dao{
 									user.getString("phoneNumber")
 					);
 			ArrayList<Pair>values2 = new ArrayList<Pair>();
-			values.add(new Pair("userID",id.toString()));
+			values2.add(new Pair("userID",id.toString()));
 			ResultSet ads = Crud.select("AdvertisementTable", values2);
 			ArrayList<Advertisement> adsList = new ArrayList<Advertisement> ();
 			

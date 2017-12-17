@@ -84,20 +84,27 @@ public class AdvertisementController extends Dao{
 				"inner JOIN HouseTable ON HouseTable.id= AdvertisementTable.houseID;";
 		ResultSet rs = Crud.customQuery(sql);
 		ArrayList<Advertisement> advertisements = new ArrayList<Advertisement>();
-		while(rs.next()) {
-			Advertisement ad = new Advertisement();
-			House home = new House();
-			ad.setAdvertisementId(rs.getInt("id"));
-			ad.setName(rs.getString("name"));
-			ad.setHouseId(rs.getInt("houseID"));
-			ad.setRate((rs.getString("rate")));
-			ad.setType(rs.getString("type"));
-			home.setDescription(rs.getString("description"));
-			home.setFloor(rs.getString("floor"));
-			home.setSize(rs.getString("size"));
-			home.setStatus(rs.getString("status"));
-			ad.setHouse(home);
-			advertisements.add(ad);
+		while(rs.next()) {			
+			if(rs.getBoolean("active") == true)
+			{
+				Advertisement ad = new Advertisement();
+				House home = new House();
+				ad.setAdvertisementId(rs.getInt("id"));
+				ad.setName(rs.getString("name"));
+				ad.setHouseId(rs.getInt("houseID"));
+				ad.setRate((rs.getString("rate")));
+				ad.setType(rs.getString("type"));
+				home.setDescription(rs.getString("description"));
+				home.setFloor(rs.getString("floor"));
+				home.setSize(rs.getString("size"));
+				home.setStatus(rs.getString("status"));
+				ad.setHouse(home);
+				advertisements.add(ad);
+			}
+			else
+			{
+				continue;
+			}
 		}
 		return advertisements;
 	}
@@ -154,26 +161,21 @@ public class AdvertisementController extends Dao{
 		ArrayList<Pair> MyId = new ArrayList<>();
 		MyId.add( new Pair( "id" , ID.toString() ) );
 		ResultSet Adv = Crud.select("AdvertisementTable", MyId);
+		Adv.first();
 		MyId.clear();
 		MyId.add( new Pair( "advertisementID" , ID.toString() ) );
 		ResultSet AdvComments = Crud.select("CommentTable", MyId);
 		System.out.println("NAME111: " + Adv.getString("name"));
 		//System.out.println("SIZE: " + AdvComments.getRow());
 		ArrayList<Comment> commentss = new ArrayList<Comment>();
-		AdvComments.first();
-		Comment comment = new Comment();
-		comment.setComment(AdvComments.getString("comment"));
-		comment.setUserId(AdvComments.getInt("userID"));
-		commentss.add(comment);
 		while(AdvComments.next())
 		{
 			System.out.println("HELLO 55555555555555555555");
-			comment = new Comment();
+			Comment comment = new Comment();
 			comment.setComment(AdvComments.getString("comment"));
 			comment.setUserId(AdvComments.getInt("userID"));
 			commentss.add(comment);
 		}
-//		Adv.first();
 		myAdvertisementData = new Advertisement(Adv.getInt("id"),
 												Adv.getString("name"),
 												Adv.getInt("userID"),
@@ -188,7 +190,7 @@ public class AdvertisementController extends Dao{
 		MyId.add( new Pair( "id" , myAdvertisementData.getHouseId().toString() ) );
 		System.out.println("NAME222 ");
 		ResultSet house =  Crud.select("HouseTable", MyId);
-//		house.first();
+		house.first();
 		House newHouse = new House(house.getInt("id"),
 								 house.getString("size"),
 								 house.getString("description"),
