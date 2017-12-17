@@ -27,6 +27,13 @@
 </head>
 <body>
 
+	<%
+		out.println(session.getAttribute("userID"));
+		if(session.getAttribute("userID")==null){
+			response.sendRedirect("login.html");
+			return;
+		}
+	%>
 	<jsp:include page="/NavBar.jsp" />
 	
 
@@ -45,15 +52,11 @@
 									<th>Link</th>
 								</tr>
 								<%
-						    		// get user ID from the cookies
-						    		Cookie[] cookies = request.getCookies();
-						    		String userID="1";
-						    		/*for( Cookie c : cookies) {
-						    			if(c.getName()=="userID") {
-						    				userID=c.getValue();
-						    			}
-						    		}*/
-						    		NotificationController controller=new NotificationController();
+						    		// get user ID from the session
+						    		
+						    		String userID=request.getSession().getAttribute("userID").toString();
+						    			
+									NotificationController controller=new NotificationController();
 	    							ArrayList<Notification>list=controller.getNotifications(userID);
 	    				    		for(Notification notification : list){
 	    					    		out.println("<tr>");

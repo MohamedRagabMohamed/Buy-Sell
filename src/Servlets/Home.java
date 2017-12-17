@@ -33,6 +33,11 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession().getAttribute("userID")==null){
+			response.sendRedirect("login.html");
+			return;
+		}
+		System.out.println(request.getSession().getAttribute("userID"));
 		ArrayList<Advertisement> allAds = null;
 		try {
 			allAds = advertisementController.getAllAds();

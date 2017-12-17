@@ -24,7 +24,12 @@
 <link href="./css/sb-admin.css" rel="stylesheet">
 </head>
 <body>
-
+	<%
+		if(session.getAttribute("userID")==null){
+			response.sendRedirect("login.html");
+			return;
+		}
+	%>
 	<jsp:include page="../NavBar.jsp" />
 	
 

@@ -33,11 +33,9 @@ public class HouseController {
 		values.add(new Pair("longitude",longitude));
 		values.add(new Pair("latitude",latitude));
 		ResultSet rs = Crud.select("HouseTable", values);
-		rs.first();
-		houseID =  rs.getString("id");
-//		while(rs.next()) {
-////			houseID = rs.getString("id");
-//		}
+		while(rs.next()) {
+			houseID = rs.getString("id");
+		}
 		System.out.println("IDD: " + houseID);
 		return houseID;
 	}

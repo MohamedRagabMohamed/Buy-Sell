@@ -39,14 +39,11 @@ public class HouseDe extends HttpServlet {
 		AdvertisementController mycon = new AdvertisementController();
 		Advertisement myAd = new Advertisement();
 		try {
-			if(request.getParameter("adId") == null)
-			{
-				my_id=my_id;
-			}
-			else
+			if(request.getParameter("adId") != null)
 			{
 				my_id = Integer.parseInt(request.getParameter("adId"));
 			}
+			System.out.println("my_id : "+my_id);
 			myAd = mycon.getAdvertismentR(my_id);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -66,8 +63,10 @@ public class HouseDe extends HttpServlet {
 			ADComments.add(comments.get(i).getComment());
 			try {
 				ResultSet ss =Crud.select("UserTable", MyId);
-				ss.first();
-				String name = ss.getString("userName");
+				String name="";
+				while(ss.next()) {
+					name = ss.getString("userName");
+				}
 				usernames.add(name);
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
@@ -79,14 +78,8 @@ public class HouseDe extends HttpServlet {
 		if( request.getParameter("newComment") != null )
 		{
 			String com = request.getParameter("newComment").toString();
-			//System.out.println(com);
-			//Cookie[] cookies = request.getCookies();
-			String userID="0";
-			//		for( Cookie c : cookies) {
-			//			if(c.getName()=="userID") {
-			//				userID=c.getValue();
-			//			}
-			//		}
+			String userID=request.getSession().getAttribute("userID").toString();
+			userID=request.getSession().getAttribute("userID").toString();
 			Integer usId = Integer.parseInt(userID);
 			Integer AdId = Integer.parseInt(request.getParameter("adId")) ;
 			try {
@@ -105,6 +98,7 @@ public class HouseDe extends HttpServlet {
 		
 		//System.out.println(11);
 		System.out.println("Name: " + myAd.getName());
+		System.out.println("rate "+myAd.getRate());
 		String [] stars = myAd.getRate().split("#");
 		String [] radios = {"","","","",""};
 		String finalRate = "";
@@ -169,7 +163,7 @@ public class HouseDe extends HttpServlet {
 		
 		
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
