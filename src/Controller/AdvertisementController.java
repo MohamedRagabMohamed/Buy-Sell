@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import Modules.Advertisement;
-import Modules.Comment;
-import Modules.House;
-import Modules.Pair;
-import database_related.Crud;
-import database_related.Dao;
+import Modules.*;
+import database_related.*;
+
+
+
 
 public class AdvertisementController extends Dao{
 

@@ -22,6 +22,28 @@
 	rel="stylesheet" type="text/css">
 <!-- Custom styles for this template-->
 <link href="./css/sb-admin.css" rel="stylesheet">
+
+<style>
+div.gallery:hover {
+	border: 1px solid #777;
+}
+
+div.gallery img {
+	width: 100%;
+	height: auto;
+}
+
+div.desc {
+	padding: 15px;
+	text-align: center;
+}
+
+.checked {
+	color: orange;
+}
+</style>
+
+
 </head>
 <body>
 	<%
@@ -100,10 +122,28 @@
 										%>
 									</td>
 									<td>
-										<%
-											out.print(ads.get(i).getRate());
-										%>
-									</td>
+									<%
+										String[] read = ads.get(i).getRate().split("#");
+											Integer[] readInt = new Integer[read.length];
+											for (int j = 0; j < read.length; j++)
+												readInt[j] = Integer.parseInt(read[j]);
+											double rate = 0, sum = 0;
+											for (int j = 0; j < readInt.length; j++) {
+												rate += (readInt[j] * (j + 1));
+												sum += readInt[j];
+
+											}
+											rate = rate / sum;
+											for (int j = 0; j < 5; j++) {
+
+												if (rate - 1 >= j) {
+													%> <span class="fa fa-star checked"></span> <%
+ 												} else {
+ 													%> <span class="fa fa-star"></span> <%
+ 												}
+ 											}
+									 %>
+ 									</td>
 									<td><a href="
 										<%
 											out.print("EditAdvertisementServlet?id="+ads.get(i).getAdvertisementId());

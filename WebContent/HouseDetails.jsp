@@ -196,21 +196,19 @@ h1 { font-size: 1.5em; margin: 10px; }
 								<th>Floor :</th>
 								<td><%=myHouse.getFloor()%></td>
 							</tr>
-							<tr>
-								<th>Longitude :</th>
-								<td><%=myHouse.getLongitude()%></td>
-							</tr>
-							<tr>
-								<th>latitude :</th>
-								<td><%=myHouse.getLatitude()%></td>
-							</tr>
 						</tbody>
 					</table>
 
 				</div>
 			</div>
+<<<<<<< HEAD
 			  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChxAQCve2o_pd9lS9zSAoWm2HLOwOkKIE&callback=initMap"
   type="text/javascript"></script>
+=======
+			
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxxkBnVSGCOFFXJdMLWd-jTpGDW9VzKd4&callback=initMap"
+  				type="text/javascript"></script>
+>>>>>>> 4fbcfd67dd0e89f2ff7b5f03de3426f3be789076
 			<script type="text/javascript">
 				function ShowMap(latitude, longitude) {
 			    console.log("This is latitude :" + latitude);
@@ -241,13 +239,12 @@ h1 { font-size: 1.5em; margin: 10px; }
 			
 			
 			</script>
-			<form>
-    			<input type="number" name="latitude" value="13.021816"/>
-    			<input type="number" name="longitude" value="80.219424"/>
+			<!--<form>
     			<input type="button" onclick="ShowMap(latitude.value,longitude.value)" value="ShowMap" />
 			</form>
-			<!--  <body onload="ShowMap(150,50)">
-			--><div id="googleMap" ></div>
+			 -->
+			 <body onload="ShowMap(<%=myHouse.getLatitude()%>,<%=myHouse.getLongitude()%>)">
+			<div id="googleMap" ></div>
 			
 			<form action = "HouseDe">
 			<h3>Rate this advertisement:<h3>
@@ -271,8 +268,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 		<h3>Comments :<h3>
 					<%
 						//out.print("\n\n\na7aaa1\n\n\n\n" + comments.size() );
-					out.print(comments.size());
-						for (int i = 0; i < comments.size(); i++) {
+							for (int i = 0; i < comments.size(); i++) {
 							//out.print("a7aaa");
 					%>
 					

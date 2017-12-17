@@ -5,10 +5,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
+<<<<<<< HEAD
 	 
+=======
+>>>>>>> 4fbcfd67dd0e89f2ff7b5f03de3426f3be789076
 	 private static String user = "root";
 	 private static String pass = "root";
-	 private static String database = "buy-sell";
+	 private static String database = "new_schema";
 	 public static Connection getConnetion() throws SQLException, ClassNotFoundException {
 		 Class.forName("com.mysql.jdbc.Driver");
 		 Connection conn = null;
@@ -18,8 +21,12 @@ public class DBConnection {
 	 }
 	 //Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname", “UserName",“Password");
 }
+<<<<<<< HEAD
 /*
 public class DBConnection {
+=======
+/*public class DBConnection {
+>>>>>>> 4fbcfd67dd0e89f2ff7b5f03de3426f3be789076
 
 	private static String user = "root";
 	private static String pass = "root";
@@ -35,6 +42,7 @@ public class DBConnection {
 }
 
 
+<<<<<<< HEAD
 
 /*
 public class DBConnection {
@@ -54,3 +62,23 @@ public class DBConnection {
 	 }
 }    
 */
+=======
+*/
+//public class DBConnection {
+//	 
+//	 //String dbURL = "jdbc:sqlserver://localhost\\sqlexpress";
+//	 //private static String dbURL = "jdbc:sqlserver://localhost:1433";
+//	 private static String user = "sa";
+//	 private static String pass = "0000";
+//	 private static String database = "buy-sell";
+//	 public static Connection getConnetion() throws SQLException, ClassNotFoundException {
+//		 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//		 Connection conn = null;
+//		 String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName="
+//		 +database+";integratedSecurity=true;user="+user+";password="+pass; 
+//		 conn = DriverManager.getConnection(connectionUrl);
+//        return conn;
+//	 }
+//}    
+
+>>>>>>> 4fbcfd67dd0e89f2ff7b5f03de3426f3be789076

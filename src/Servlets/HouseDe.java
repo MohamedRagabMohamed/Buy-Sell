@@ -38,6 +38,7 @@ public class HouseDe extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AdvertisementController mycon = new AdvertisementController();
 		Advertisement myAd = new Advertisement();
+		
 		try {
 			if(request.getParameter("adId") != null)
 			{
@@ -49,6 +50,39 @@ public class HouseDe extends HttpServlet {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		if( request.getParameter("newComment") != null )
+		{
+			String com = request.getParameter("newComment").toString();
+			String userID=request.getSession().getAttribute("userID").toString();
+			userID=request.getSession().getAttribute("userID").toString();
+			Integer usId = Integer.parseInt(userID);
+			Integer AdId = my_id;
+			try {
+				mycon.setcomment(AdId, usId, com);
+				mycon.setNotifecation(myAd.getHouseId(), usId, myAd.getUserName()+" commented on your post called "+myAd.getName());
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			try {
+				if(request.getParameter("adId") != null)
+				{
+					my_id = Integer.parseInt(request.getParameter("adId"));
+				}
+				System.out.println("my_id : "+my_id);
+				myAd = mycon.getAdvertismentR(my_id);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
 		}
 		ArrayList<String> usernames = new ArrayList<String>();
 		ArrayList<String> ADComments = new ArrayList<String>();
@@ -75,28 +109,6 @@ public class HouseDe extends HttpServlet {
 			}
 			MyId.clear();
 		}
-		if( request.getParameter("newComment") != null )
-		{
-			String com = request.getParameter("newComment").toString();
-			String userID=request.getSession().getAttribute("userID").toString();
-			userID=request.getSession().getAttribute("userID").toString();
-			Integer usId = Integer.parseInt(userID);
-			Integer AdId = Integer.parseInt(request.getParameter("adId")) ;
-			try {
-				mycon.setcomment(AdId, usId, com);
-				mycon.setNotifecation(myAd.getHouseId(), usId, myAd.getUserName()+" commented on your post called "+myAd.getName());
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-		}
-		
-		//System.out.println(11);
 		System.out.println("Name: " + myAd.getName());
 		System.out.println("rate "+myAd.getRate());
 		String [] stars = myAd.getRate().split("#");
