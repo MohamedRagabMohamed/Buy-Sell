@@ -102,7 +102,12 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 </head>
 <body>
-
+	<%
+		if(session.getAttribute("userID")==null){
+			response.sendRedirect("login.html");
+			return;
+		}
+	%>
 	<jsp:include page="NavBar.jsp" />
 
 

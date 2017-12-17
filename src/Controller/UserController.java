@@ -54,37 +54,30 @@ public class UserController extends Dao{
 	public User getUser(Integer id ) {
 		ArrayList<Pair>values = new ArrayList<Pair>();
 		values.add(new Pair("id",id.toString()));
+		User returnUser=null;
 		try {
 			ResultSet user = Crud.select(tableName,values);
-			user.first();
-			User returnUser = new User(user.getInt("id"),
-									user.getString("userName"),
-									user.getString("email"),
-									user.getString("password"),
-									user.getString("role"),
-									user.getString("firstName"),
-									user.getString("lastName"),
-									user.getString("profilePicture"),			
-									user.getString("address"),	
-									user.getString("phoneNumber")
-					);
+			while(user.next()) {
+				returnUser = new User(user.getInt("id"),
+						user.getString("userName"),
+						user.getString("email"),
+						user.getString("password"),
+						user.getString("role"),
+						user.getString("firstName"),
+						user.getString("lastName"),
+						user.getString("profilePicture"),			
+						user.getString("address"),	
+						user.getString("phoneNumber")
+						);
+			}
 			ArrayList<Pair>values2 = new ArrayList<Pair>();
-			values.add(new Pair("userID",id.toString()));
+			values2.add(new Pair("userID",id.toString()));
 			ResultSet ads = Crud.select("AdvertisementTable", values2);
 			ArrayList<Advertisement> adsList = new ArrayList<Advertisement> ();
-			
-			ads.first();
-			Advertisement ad= new Advertisement();
-			ad.setName(ads.getString("name"));
-			ad.setAdvertisementId(ads.getInt("id") );
-			ad.setUserId(ads.getInt("userID"));
-			ad.setHouseId(ads.getInt("houseID"));
-			ad.setRate(ads.getString("rate"));
-			ad.setType(ads.getString("type"));
-			adsList.add(ad);
-			while (ads.next() == true) {
-				System.out.println("HEEY");
-				ad= new Advertisement();
+			System.out.println("YES11");
+			while(ads.next()){
+				System.out.println("YES22");
+				Advertisement ad= new Advertisement();
 				ad.setName(ads.getString("name"));
 				ad.setAdvertisementId(ads.getInt("id") );
 				ad.setUserId(ads.getInt("userID"));

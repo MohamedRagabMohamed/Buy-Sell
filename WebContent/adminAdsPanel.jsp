@@ -34,7 +34,12 @@
 		</style>
 	</head>
 <body>
-
+	<%
+		if(session.getAttribute("userID")==null){
+			response.sendRedirect("login.html");
+			return;
+		}
+	%>
 	<jsp:include page="./NavBar.jsp" />
 	
 	<%

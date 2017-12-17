@@ -21,6 +21,12 @@
 </head>
 
 <body class="bg-dark">
+	<%
+		if(session.getAttribute("userID")==null){
+			response.sendRedirect("login.html");
+			return;
+		}
+	%>
 	<div class="container">
 		<div class="card card-register mx-auto mt-5">
 			<div class="card-header">Update an Advertise</div>
