@@ -40,7 +40,7 @@ public class DBConnection {
 	 //String dbURL = "jdbc:sqlserver://localhost\\sqlexpress";
 	 //private static String dbURL = "jdbc:sqlserver://localhost:1433";
 	 private static String user = "sa";
-	 private static String pass = "ma7moudouka";
+	 private static String pass = "0000";
 	 private static String database = "buy-sell";
 	 public static Connection getConnetion() throws SQLException, ClassNotFoundException {
 		 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
