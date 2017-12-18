@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import Controller.AdvertisementController;
 import Modules.*;
 import database_related.Crud;
@@ -109,24 +111,31 @@ public class HouseDe extends HttpServlet {
 			}
 			MyId.clear();
 		}
-		System.out.println("Name: " + myAd.getName());
-		System.out.println("rate "+myAd.getRate());
 		String [] stars = myAd.getRate().split("#");
-		String [] radios = {"","","","",""};
+		Integer [] radios = {0,0,0,0,0};
 		String finalRate = "";
-		if( request.getParameter("star1") != null)
+		String data = (String)request.getParameter("rating");
+		if( data != null)
 		{
-			radios[0] = request.getParameter("star1");
-			radios[1] = request.getParameter("star2");
-			radios[2] = request.getParameter("star3");
-			radios[3] = request.getParameter("star4");
-			radios[4] = request.getParameter("star5");
+			if(data.equals("1") ){ radios[0]= 1;}
+			else if(data.equals("2") ){ radios[1]= 1;}
+			else if(data.equals("3") ){ radios[2]= 1;}
+			else if(data.equals("4") ){ radios[3]= 1;}
+			else if(data.equals("5") ){ radios[4]= 1;}
 		}
-		if(radios[0]!="" && radios[1]!="" && radios[2]!="" && radios[3]!="" && radios[4]!="")
+		if(radios[0]!= 1 || radios[1]!= 1 || radios[2]!=1 || radios[3]!=1 || radios[4]!=1)
 		{
-			int starInc= this.getStarInc(radios);
+			int starInc = 0;
+			for(int i = 0 ; i < 5 ; i++)
+			{
+				if(radios[i] == 1){
+					starInc=i+1;
+					break;
+				}
+			}
 			if(stars.length == 0)
 			{
+				
 				if(starInc == 1){ finalRate ="1#0#0#0#0";}
 				else if(starInc == 2){ finalRate ="0#1#0#0#0";}
 				else if(starInc == 3){ finalRate ="0#0#1#0#0";}
@@ -136,7 +145,7 @@ public class HouseDe extends HttpServlet {
 			}
 			else
 			{
-				Integer [] starsWight = null;
+				Integer [] starsWight = {0,0,0,0,0};
 				for(int i = 0 ; i < 5 ; i++)
 				{
 					starsWight[i]=Integer.parseInt(stars[i]);
@@ -163,15 +172,14 @@ public class HouseDe extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-		request.setAttribute("House", myAd.getHouse());
-		request.setAttribute("Comments", ADComments);
-		request.setAttribute("CommentUserNames", usernames);
-		request.setAttribute("UserName", myAd.getUserName());
-		request.setAttribute("Rate", myAd.getRate());
-		request.setAttribute("Advertisement", myAd);
-		request.getRequestDispatcher("HouseDetails.jsp").forward(request, response);
-		
+		HttpSession session = request.getSession();
+		session.setAttribute("House", myAd.getHouse());
+		session.setAttribute("Comments", ADComments);
+		session.setAttribute("CommentUserNames", usernames);
+		session.setAttribute("UserName", myAd.getUserName());
+		session.setAttribute("Rate", myAd.getRate());
+		session.setAttribute("Advertisement", myAd);
+		response.sendRedirect("HouseDetails.jsp");
 		
 		
 		
@@ -184,15 +192,5 @@ public class HouseDe extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-	}
-	public Integer getStarInc(String [] stars)
-	{
-		int i = 0 ;
-		if(stars[4].equals("5")){i = 5 ;}
-		else if(stars[4].equals("4")){i = 4 ;}
-		else if(stars[4].equals("3")){i = 3 ;}
-		else if(stars[4].equals("2")){i = 2 ;}
-		else if(stars[4].equals("1")){i = 1 ;}
-		return i ;
 	}
 }
