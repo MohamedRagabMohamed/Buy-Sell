@@ -4,7 +4,7 @@ public class Notification {
 	private Integer notificationId;
 	private String notification;
 	private String userId; 
-	private String advId;
+	private String advID;
 	private String advName;
 	
 	public String getAdvName() {
@@ -28,13 +28,14 @@ public class Notification {
 	public String getUserID() {
 		return userId;
 	}
+	public String getAdvID() {
+		return advID;
+	}
+	public void setAdvID(String advID) {
+		this.advID = advID;
+	}
 	public void setUserID(String userID) {
 		this.userId = userID;
 	}
-	public String getAdvID() {
-		return advId;
-	}
-	public void setAdvID(String advId) {
-		this.advId = advId;
-	}
+
 }

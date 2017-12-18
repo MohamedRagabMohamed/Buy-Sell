@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import Controller.AdvertisementController;
 import Modules.Advertisement;
+ 
+
 
 
 
@@ -64,14 +64,14 @@ public class activeAdsSevlet extends HttpServlet {
 //        out.close();
 		
 		response.setContentType("application/json;charset=UTF-8");
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String json = gson.toJson(activeAds);
+		//Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		//String json = gson.toJson(activeAds);
 		
 		
 		
 
         PrintWriter out = response.getWriter();
-        out.print(json);
+        //out.print(json);
             
 
 		

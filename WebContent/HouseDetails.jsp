@@ -201,7 +201,6 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 				</div>
 			</div>
-			
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxxkBnVSGCOFFXJdMLWd-jTpGDW9VzKd4&callback=initMap"
   				type="text/javascript"></script>
 			<script type="text/javascript">
@@ -262,9 +261,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 		
 		<h3>Comments :<h3>
 					<%
-						//out.print("\n\n\na7aaa1\n\n\n\n" + comments.size() );
 							for (int i = 0; i < comments.size(); i++) {
-							//out.print("a7aaa");
 					%>
 					
 					<div class="card">

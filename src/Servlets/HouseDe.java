@@ -62,7 +62,7 @@ public class HouseDe extends HttpServlet {
 			Integer AdId = my_id;
 			try {
 				mycon.setcomment(AdId, usId, com);
-				mycon.setNotifecation(myAd.getHouseId(), usId, myAd.getUserName()+" commented on your post called "+myAd.getName());
+				mycon.setNotifecation(myAd.getAdvertisementId(), usId, myAd.getUserName()+" commented on your post called "+myAd.getName());
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

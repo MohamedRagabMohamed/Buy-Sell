@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import Modules.Pair;
 
+
+
 public class Crud {
 	public static void insertRecord(String tableName,ArrayList<Pair>values) throws ClassNotFoundException, SQLException {
 		Connection con=DBConnection.getConnetion();

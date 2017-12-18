@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Modules.Advertisement;
 import Modules.House;
 import Modules.Pair;
 import database_related.Crud;
@@ -81,4 +82,5 @@ public class HouseController {
 		}
 		return null;
 	}
+
 }
