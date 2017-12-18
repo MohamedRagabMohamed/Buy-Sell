@@ -201,14 +201,9 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 				</div>
 			</div>
-<<<<<<< HEAD
-			  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChxAQCve2o_pd9lS9zSAoWm2HLOwOkKIE&callback=initMap"
-  type="text/javascript"></script>
-=======
-			
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxxkBnVSGCOFFXJdMLWd-jTpGDW9VzKd4&callback=initMap"
   				type="text/javascript"></script>
->>>>>>> 4fbcfd67dd0e89f2ff7b5f03de3426f3be789076
+
 			<script type="text/javascript">
 				function ShowMap(latitude, longitude) {
 			    console.log("This is latitude :" + latitude);
