@@ -32,7 +32,10 @@ public class AlertController {
 		values.add(new Pair("type",type));
 		values.add(new Pair("size",size));
 		Crud.insertRecord("AlertTable", values);
+		
+		
 	}
+
 	public static void setNotoficationForAlert(String status,String type,String size) throws ClassNotFoundException, SQLException {
 		ArrayList<Pair>values = new ArrayList<Pair>();
 		values.add(new Pair("status",status));
@@ -45,4 +48,5 @@ public class AlertController {
 			values.clear();
 		}
 	}
+
 }
