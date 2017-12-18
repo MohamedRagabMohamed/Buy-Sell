@@ -84,6 +84,7 @@ div.desc {
 									<th>Size</th>
 									<th>Status</th>
 									<th>Rate</th>
+									<th></th>
 								</tr>
 							</tfoot>
 							<tbody>
@@ -170,50 +171,37 @@ div.desc {
 		src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script type="text/javascript"
 		src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+		<script src="./vendor/datatables/dataTables.bootstrap4.js"></script>
+		
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							// Setup - add a text input to each footer cell
-							$('#example tfoot th')
-									.each(
-											function() {
-												var title = $(this).text();
-												$(this)
-														.html(
-																'<input type="text" placeholder="Search '+title+'" />');
-											});
-
-							// DataTable
-							var table = $('#example').DataTable();
-
-							// Apply the search
-							table
-									.columns()
-									.every(
-											function() {
-												var that = this;
-
-												$('input', this.footer())
-														.on(
-																'keyup change',
-																function() {
-																	if (that
-																			.search() !== this.value) {
-																		that
-																				.search(
-																						this.value)
-																				.draw();
-																	}
-																});
-											});
-
-							$('#example tbody').on( 'click', 'tr', function () {
-							    console.log( table.row( this ).data() );
-							} );
-						});
+	$(document).ready(function() {
+	    // Setup - add a text input to each footer cell
+	    $('#example tfoot th').each( function () {
+	        var title = $(this).text();
+	        if(title !== ""){
+	        	  $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+	        }
+	      
+	    } );
+	 
+	    // DataTable
+	    var table = $('#example').DataTable();
+	 
+	    // Apply the search
+	    table.columns().every( function () {
+	        var that = this;
+	 
+	        $( 'input', this.footer() ).on( 'keyup change', function () {
+	            if ( that.search() !== this.value ) {
+	                that
+	                    .search( this.value )
+	                    .draw();
+	            }
+	        } );
+	    } );
+	} );
 	</script>
-	<script src="./vendor/datatables/jquery.dataTables.js"></script>
-	<script src="./vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- 	<script src="./vendor/datatables/jquery.dataTables.js"></script> -->
+
 </body>
 </html>

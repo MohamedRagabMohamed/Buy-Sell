@@ -5,13 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-<<<<<<< HEAD
-	 
-=======
->>>>>>> 4fbcfd67dd0e89f2ff7b5f03de3426f3be789076
 	 private static String user = "root";
 	 private static String pass = "root";
-	 private static String database = "new_schema";
+	 private static String database = "buy-sell";
 	 public static Connection getConnetion() throws SQLException, ClassNotFoundException {
 		 Class.forName("com.mysql.jdbc.Driver");
 		 Connection conn = null;
@@ -21,7 +17,6 @@ public class DBConnection {
 	 }
 	 //Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname", “UserName",“Password");
 }
-<<<<<<< HEAD
 /*
 public class DBConnection {
 =======
@@ -62,8 +57,6 @@ public class DBConnection {
 	 }
 }    
 */
-=======
-*/
 //public class DBConnection {
 //	 
 //	 //String dbURL = "jdbc:sqlserver://localhost\\sqlexpress";
@@ -81,4 +74,4 @@ public class DBConnection {
 //	 }
 //}    
 
->>>>>>> 4fbcfd67dd0e89f2ff7b5f03de3426f3be789076
+

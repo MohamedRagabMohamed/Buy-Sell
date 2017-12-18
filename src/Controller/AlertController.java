@@ -29,5 +29,10 @@ public class AlertController {
 		values.add(new Pair("type",type));
 		values.add(new Pair("size",size));
 		Crud.insertRecord("AlertTable", values);
+		
+		
 	}
+	
+	
+	
 }
