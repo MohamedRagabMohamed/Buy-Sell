@@ -115,14 +115,14 @@ h1 { font-size: 1.5em; margin: 10px; }
 		<div class="container-fluid">
 
 			<%
-				Advertisement myAd = (Advertisement) request.getAttribute("Advertisement");
-				House myHouse = (House) request.getAttribute("House");
+				Advertisement myAd = (Advertisement) session.getAttribute("Advertisement");
+				House myHouse = (House) session.getAttribute("House");
 				String images = myHouse.getImages();
-				String uName = (String) request.getAttribute("UserName");
+				String uName = (String) session.getAttribute("UserName");
 				ArrayList<String> usernames = new ArrayList<String>();
 				ArrayList<Comment> comments = new ArrayList<Comment>();
-				usernames = (ArrayList<String>) request.getAttribute("CommentUserNames");
-				comments = (ArrayList<Comment>) request.getAttribute("Comments");
+				usernames = (ArrayList<String>) session.getAttribute("CommentUserNames");
+				comments = (ArrayList<Comment>) session.getAttribute("Comments");
 			%>
 			.<br>
 			<br>
@@ -201,14 +201,9 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 				</div>
 			</div>
-<<<<<<< HEAD
-			  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChxAQCve2o_pd9lS9zSAoWm2HLOwOkKIE&callback=initMap"
-  type="text/javascript"></script>
-=======
 			
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxxkBnVSGCOFFXJdMLWd-jTpGDW9VzKd4&callback=initMap"
   				type="text/javascript"></script>
->>>>>>> 4fbcfd67dd0e89f2ff7b5f03de3426f3be789076
 			<script type="text/javascript">
 				function ShowMap(latitude, longitude) {
 			    console.log("This is latitude :" + latitude);
