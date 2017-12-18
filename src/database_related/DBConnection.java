@@ -23,11 +23,9 @@ public class DBConnection {
 }    
 */
 
-/*
+
 public class DBConnection {
-=======
-/*public class DBConnection {
->>>>>>> 4fbcfd67dd0e89f2ff7b5f03de3426f3be789076
+
 
 	private static String user = "root";
 	private static String pass = "root";
@@ -42,7 +40,8 @@ public class DBConnection {
 	//Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname", “UserName",“Password");
 }
 
-*/
+
+/*
 public class DBConnection {
 	 
 	 //String dbURL = "jdbc:sqlserver://localhost\\sqlexpress";
@@ -59,6 +58,6 @@ public class DBConnection {
         return conn;
 	 }
 }    
-
+*/
 
 

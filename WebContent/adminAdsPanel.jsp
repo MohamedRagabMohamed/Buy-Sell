@@ -35,7 +35,7 @@
 	</head>
 <body>
 	<%
-		if(session.getAttribute("userID")==null){
+		if(session.getAttribute("userID")==null ||session.getAttribute("role")==null ){
 			response.sendRedirect("login.html");
 			return;
 		}

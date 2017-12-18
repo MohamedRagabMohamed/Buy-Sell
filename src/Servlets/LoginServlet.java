@@ -53,6 +53,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession S = request.getSession(true);
 				S.setAttribute("userID", loginData.first);
 				if(loginData.second != null && loginData.second.equals("admin")) {
+					S.setAttribute("role", loginData.second);
 					response.sendRedirect("http://localhost:8080/IA-Project/adminAdsPanel.jsp");
 				}else {
 					response.sendRedirect("http://localhost:8080/IA-Project/Home");
