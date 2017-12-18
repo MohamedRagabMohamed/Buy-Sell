@@ -11,8 +11,5 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/servlet-api-3.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.45-bin.jar"/>
 	<classpathentry kind="lib" path="gson-2.3.1.jar"/>
-	<classpathentry kind="lib" path="javax.mail-api-1.6.0.jar"/>
-	<classpathentry kind="lib" path="smtp-1.4.5.jar"/>
-	<classpathentry kind="lib" path="mail-1.4.7.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

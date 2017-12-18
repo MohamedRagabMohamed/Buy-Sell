@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Controller.LoginController;
+import Modules.Pair;
 
 /**
  * Servlet implementation class LoginServlet
@@ -46,13 +47,17 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		System.out.println(userName+" "+password);
 		try {
-			int userID = loginController.checkUser(userName,password);
-			System.out.println("uID"+userID);
-			if(userID != -1) {
+			Pair loginData = loginController.checkUser(userName,password);
+			System.out.println("uID"+loginData.first);
+			if(loginData.first != "-1") {
 				HttpSession S = request.getSession(true);
-				S.setAttribute("userID", userID);
-				response.setStatus(250);
-				response.sendRedirect("http://localhost:8080/IA-Project/Home");
+				S.setAttribute("userID", loginData.first);
+				if(loginData.second != null && loginData.second.equals("admin")) {
+					response.sendRedirect("http://localhost:8080/IA-Project/adminAdsPanel.jsp");
+				}else {
+					response.sendRedirect("http://localhost:8080/IA-Project/Home");
+				}
+				
 			}else {
 				response.sendRedirect("http://localhost:8080/IA-Project/wrong.html");
 			}
