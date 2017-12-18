@@ -115,14 +115,14 @@ h1 { font-size: 1.5em; margin: 10px; }
 		<div class="container-fluid">
 
 			<%
-				Advertisement myAd = (Advertisement) request.getAttribute("Advertisement");
-				House myHouse = (House) request.getAttribute("House");
+				Advertisement myAd = (Advertisement) session.getAttribute("Advertisement");
+				House myHouse = (House) session.getAttribute("House");
 				String images = myHouse.getImages();
-				String uName = (String) request.getAttribute("UserName");
+				String uName = (String) session.getAttribute("UserName");
 				ArrayList<String> usernames = new ArrayList<String>();
 				ArrayList<Comment> comments = new ArrayList<Comment>();
-				usernames = (ArrayList<String>) request.getAttribute("CommentUserNames");
-				comments = (ArrayList<Comment>) request.getAttribute("Comments");
+				usernames = (ArrayList<String>) session.getAttribute("CommentUserNames");
+				comments = (ArrayList<Comment>) session.getAttribute("Comments");
 			%>
 			.<br>
 			<br>
@@ -203,7 +203,6 @@ h1 { font-size: 1.5em; margin: 10px; }
 			</div>
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxxkBnVSGCOFFXJdMLWd-jTpGDW9VzKd4&callback=initMap"
   				type="text/javascript"></script>
-
 			<script type="text/javascript">
 				function ShowMap(latitude, longitude) {
 			    console.log("This is latitude :" + latitude);
@@ -262,9 +261,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 		
 		<h3>Comments :<h3>
 					<%
-						//out.print("\n\n\na7aaa1\n\n\n\n" + comments.size() );
 							for (int i = 0; i < comments.size(); i++) {
-							//out.print("a7aaa");
 					%>
 					
 					<div class="card">

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Controller.AdvertisementController;
+import Controller.AlertController;
 import Controller.HouseController;
 import Modules.Advertisement;
 import Modules.House;
@@ -68,6 +69,7 @@ public class CreateAdvertisementServlet extends HttpServlet {
 		try {
 			houseController.addHouse(house);
 			advController.addAdvertiesement(advertisement,longitude,latitude,request);
+			AlertController.setNotoficationForAlert(house.getStatus(), advertisement.getType(),house.getSize());
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println("DATA-BASE ERROR");
 			e.printStackTrace();

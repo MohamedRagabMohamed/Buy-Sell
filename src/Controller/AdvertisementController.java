@@ -48,6 +48,7 @@ public class AdvertisementController extends Dao{
 		Crud.insertRecord("AdvertisementTable", advertisementValues);
 	}
 
+	
 	public void updateAdvertisement(Advertisement advertisement) throws ClassNotFoundException, SQLException {
 		ArrayList<Pair>advertisementValues=new ArrayList<Pair>();
 		advertisementValues.add(new Pair("type",advertisement.getType()));
@@ -226,10 +227,10 @@ public class AdvertisementController extends Dao{
 		Crud.insertRecord("CommentTable", MyId);
 	}
 	
-	public void setNotifecation(Integer HoId,Integer uId, String notification ) throws ClassNotFoundException, SQLException
+	public void setNotifecation(Integer advID,Integer uId, String notification ) throws ClassNotFoundException, SQLException
 	{
 		ArrayList<Pair> MyId = new ArrayList<>();
-		MyId.add( new Pair( "houseID" , HoId.toString() ) );
+		MyId.add( new Pair( "advID" , advID.toString() ) );
 		MyId.add( new Pair( "userID" , uId.toString() ) );
 		MyId.add( new Pair( "notification " , notification  ) );
 		Crud.insertRecord("NotificationTable", MyId);

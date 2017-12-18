@@ -17,28 +17,16 @@ public class NotificationController {
 		while (rs.next()) {
 			Notification newNotification=new Notification();
 			newNotification.setNotification(rs.getString("notification"));
-			String id=rs.getString("advID");
-			newNotification.setAdvID(id);
-			newNotification.setAdvName(getAdvName(id));
+			String advID=rs.getString("advID");
+			newNotification.setAdvID(advID);
 			list.add(newNotification);
 		}
 		for(Notification no : list) {
-			System.out.println(no.getAdvID());
+			System.out.println(no.getAdvName());
 			System.out.println(no.getAdvName());
 			System.out.println(no.getNotification());
 			System.out.println("----- --");
 		}
 		return list;
 	}
-	private String getAdvName(String advId) throws ClassNotFoundException, SQLException {
-		ArrayList<Pair>values=new ArrayList<Pair>();
-		values.add(new Pair("id",advId));
-		ResultSet rs=Crud.select("AdvertisementTable",values);
-		String name="";
-		while (rs.next()) {
-			name=rs.getString("name");
-		}
-		return name;
-	}
-
 }

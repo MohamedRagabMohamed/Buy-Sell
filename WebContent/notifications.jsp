@@ -48,7 +48,6 @@
 							<tbody>
 								<tr>
 									<th>Notification</th>
-									<th>Adv Name</th>
 									<th>Link</th>
 								</tr>
 								<%
@@ -57,14 +56,13 @@
 						    		String userID=request.getSession().getAttribute("userID").toString();
 						    			
 									NotificationController controller=new NotificationController();
+									//out.println("USER_ID : "+userID);
 	    							ArrayList<Notification>list=controller.getNotifications(userID);
 	    				    		for(Notification notification : list){
 	    					    		out.println("<tr>");
 	    					    		out.println("<td>"+notification.getNotification());
 	    					    		out.println("</td>");
-	    					    		out.println("<td>"+notification.getAdvName());
-	    					    		out.println("</td>");
-	    					    		String str="<a href=\"http://localhost:8080/IA-Project/HouseDetails.jsp?"+notification.getAdvID()+"\""+">view</a>";
+	    					    		String str="<a href=\"http://localhost:8080/IA-Project/HouseDe?adId="+notification.getAdvID()+"\""+">view</a>";
 	    					    		out.println("<td>"+str);
 	    					    		out.println("</td>");
 	    					    		out.println("</tr>");
