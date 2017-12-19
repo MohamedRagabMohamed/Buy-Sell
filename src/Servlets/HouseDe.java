@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Controller.AdvertisementController;
+import Controller.UserController;
 import Modules.*;
 import database_related.Crud;
 
@@ -62,7 +63,9 @@ public class HouseDe extends HttpServlet {
 			Integer AdId = my_id;
 			try {
 				mycon.setcomment(AdId, usId, com);
-				mycon.setNotifecation(myAd.getAdvertisementId(), usId, myAd.getUserName()+" commented on your post called "+myAd.getName());
+				UserController cont=new UserController();
+				User u=cont.getUser(usId);
+				mycon.setNotifecation(myAd.getAdvertisementId(), myAd.getUserId(), u.getUserName()+" commented on your post called "+myAd.getName());
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

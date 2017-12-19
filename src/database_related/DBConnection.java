@@ -21,27 +21,22 @@ public class DBConnection {
         return conn;
 	 }
 }    
-
-
+*/
 
 public class DBConnection {
-
-
 	private static String user = "root";
 	private static String pass = "root";
 	private static String database = "buy-sell";
 	public static Connection getConnetion() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = null;
-		String connectionUrl = "jdbc:mysql://localhost/" + database;
+		String connectionUrl = "jdbc:mysql://localhost:3306/" + database;
 		conn = DriverManager.getConnection(connectionUrl, user, pass);
 		return conn;
 	}
-	//Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname", “UserName",“Password");
 }
-*/
 
-
+/*
 public class DBConnection {
 	 
 	 //String dbURL = "jdbc:sqlserver://localhost\\sqlexpress";
@@ -58,6 +53,6 @@ public class DBConnection {
         return conn;
 	 }
 }    
-
+*/
 
 

@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Pair loginData = loginController.checkUser(userName,password);
 			System.out.println("uID"+loginData.first);
-			if(loginData.first != "-1") {
+			if(!loginData.first.equals("-1")) {
 				HttpSession S = request.getSession(true);
 				S.setAttribute("userID", loginData.first);
 				if(loginData.second != null && loginData.second.equals("admin")) {
